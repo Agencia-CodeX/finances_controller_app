@@ -1,0 +1,5 @@
+/*.js
+/client/*.js
+node_modules
+server/dist
+server/node_modules
