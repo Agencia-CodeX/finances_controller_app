@@ -1,0 +1,11 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "username": "qfinances",
+    "password": "Ab12345@",
+    "database": "qfinances",
+    "entities": ["./src/modules/**/entities/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
+}
