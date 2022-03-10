@@ -10,6 +10,7 @@ import { View, Text } from "react-native";
 import { ThemeProvider } from "styled-components";
 
 import theme from "./src/global/styles/theme";
+import { StartPage } from "./src/pages/StartPage";
 
 export default function App() {
   const [fonstLoaded] = useFonts({
@@ -24,9 +25,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View>
-        <Text>Hello World</Text>
-      </View>
+      <StartPage />
     </ThemeProvider>
   );
 }
