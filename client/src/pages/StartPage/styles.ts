@@ -21,9 +21,9 @@ export const Header = styled.View`
   position: absolute;
 `;
 
-export const AppTitle = styled.Text`
+export const AppTitle = styled.Image`
   color: ${({ theme }) => theme.colors.fontsColor};
-  font-size: 24px;
+  font-size: ${RFValue(24)}px;
   font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
@@ -37,11 +37,56 @@ export const Footer = styled.View`
   width: 321px;
   height: 190px;
   position: absolute;
-  bottom: 65px;
+  bottom: 30px;
   margin-left: 25px;
   margin-bottom: ${getBottomSpace()}px;
 `;
 
 export const Gradient = styled.ImageBackground`
   flex: 1;
+`;
+
+export const CardsImage = styled.Image`
+  position: absolute;
+  right: 0px;
+  top: -5px;
+`;
+
+export const StartButton = styled.TouchableOpacity`
+  height: 60px;
+  width: ${RFValue(310)}px;
+  border-radius: 18px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TextButton = styled.Text`
+  font-size: ${RFValue(16)}px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.fontsColor};
+`;
+
+export const Logo = styled.Image`
+  left: -20px;
+  top: -20px;
+`;
+
+export const SignInText = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.fontsColor};
+  margin-top: 10px;
+  opacity: 0.4;
+`;
+
+export const Link = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.fontsColor};
+  margin-top: 10px;
+`;
+
+export const BottomTexts = styled.View`
+  flex-direction: row;
 `;
