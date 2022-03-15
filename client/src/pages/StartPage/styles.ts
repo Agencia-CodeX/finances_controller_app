@@ -3,7 +3,7 @@ import {
   getBottomSpace,
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -11,6 +11,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
   margin: 0;
   padding: 0;
+  width: 100%;
 `;
 
 export const Header = styled.View`
@@ -34,12 +35,12 @@ export const Title = styled.Text`
 `;
 
 export const Footer = styled.View`
-  width: 321px;
+  width: 100%;
   height: 190px;
   position: absolute;
   bottom: 30px;
-  margin-left: 25px;
   margin-bottom: ${getBottomSpace()}px;
+  padding: 0 ${RFValue(25)}px;
 `;
 
 export const Gradient = styled.ImageBackground`
@@ -54,7 +55,6 @@ export const CardsImage = styled.Image`
 
 export const StartButton = styled.TouchableOpacity`
   height: 60px;
-  width: ${RFValue(310)}px;
   border-radius: 18px;
   margin-top: 10px;
   align-items: center;
