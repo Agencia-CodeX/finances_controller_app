@@ -6,15 +6,15 @@ import { HeaderLogo } from "../../global/Components/Logo";
 import {
   Container,
   Header,
-  LoginForm,
+  Form,
+  RegisterForm,
   TitleForm,
   Input,
-  Form,
-  LoginButton,
+  RegisterButton,
   TextButton,
 } from "./styles";
 
-export function Login() {
+export function Register() {
   return (
     <Container>
       <GradientBackground />
@@ -22,16 +22,19 @@ export function Login() {
         <HeaderLogo />
       </Header>
       <Form>
-        <LoginForm>
-          <TitleForm>Login</TitleForm>
+        <RegisterForm>
+          <TitleForm>Cadastro</TitleForm>
+
+          <Input placeholder="Nome"></Input>
           <Input placeholder="Email"></Input>
           <Input placeholder="Senha" secureTextEntry={true}></Input>
-        </LoginForm>
-        <LoginButton>
+          <Input placeholder="Confirmar Senha" secureTextEntry={true}></Input>
+        </RegisterForm>
+        <RegisterButton>
           <LinearBackgroundButton>
-            <TextButton>Entrar</TextButton>
+            <TextButton>Cadastrar-se</TextButton>
           </LinearBackgroundButton>
-        </LoginButton>
+        </RegisterButton>
       </Form>
     </Container>
   );

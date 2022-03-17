@@ -3,14 +3,6 @@ import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Header = styled.View`
-  width: ${RFValue(120)}px;
-  height: ${RFValue(36)}px;
-  margin: ${Platform.OS === "android" ? 55 : getStatusBarHeight() + 30}px 0px
-    0px ${RFValue(25)}px;
-  position: absolute;
-`;
-
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
@@ -19,20 +11,29 @@ export const Container = styled.View`
   width: 100%;
 `;
 
-export const LoginForm = styled.View`
-  border: 1px solid;
-  border-radius: 19px;
-  border-color: rgba(255, 255, 255, 0.17);
-  width: 100%;
-  top: ${RFValue(219)}px;
-  align-items: center;
-  padding: 20px;
+export const Header = styled.View`
+  width: ${RFValue(120)}px;
+  height: ${RFValue(36)}px;
+  margin: ${Platform.OS === "android" ? 55 : getStatusBarHeight() + 30}px 0px
+    0px ${RFValue(25)}px;
+  position: absolute;
 `;
 
 export const Form = styled.View`
   width: 100%;
   padding: 0 ${RFValue(25)}px;
   position: absolute;
+`;
+
+export const RegisterForm = styled.View`
+  border: 1px solid;
+  border-radius: 19px;
+  border-color: rgba(255, 255, 255, 0.17);
+  width: 100%;
+  height: 450px;
+  top: ${RFValue(140)}px;
+  padding: 20px;
+  align-items: center;
 `;
 
 export const TitleForm = styled.Text`
@@ -52,16 +53,16 @@ export const Input = styled.TextInput.attrs({
   border-color: rgba(255, 255, 255, 0.17);
   border-radius: 24px;
   padding: 15px;
-  margin: 20px;
+  margin: 15px 10px;
   background: rgba(255, 255, 255, 0.1);
 `;
 
-export const LoginButton = styled.TouchableOpacity`
+export const RegisterButton = styled.TouchableOpacity`
   height: 60px;
   border-radius: 18px;
   align-items: center;
   justify-content: center;
-  margin-top: ${RFValue(235)}px;
+  margin-top: ${RFValue(155)}px;
 `;
 
 export const TextButton = styled.Text`
