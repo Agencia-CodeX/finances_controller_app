@@ -2,7 +2,8 @@ export default {
   colors: {
     background: "#0D0E1E",
 
-    gradient1: "#5F7EFF",
+    gradientButton:
+      "radial-gradient(72.53% 113.81% at 88.58% 24.1%, #7388FF 0%, #CA73FF 50.34%, #FF739D 100%)",
     gradient2: "#9245DE",
 
     fontsColor: "#FFFFFF",
