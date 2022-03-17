@@ -2,7 +2,8 @@
 import React from "react";
 
 import { GradientBackground } from "../../global/Components/GradientBackground";
-import { RadialBackgroundButton } from "../../global/Components/GradientButton";
+import { LinearBackgroundButton } from "../../global/Components/GradientButton";
+import { HeaderLogo } from "../../global/Components/Logo";
 import {
   Container,
   Header,
@@ -11,7 +12,6 @@ import {
   CardsImage,
   StartButton,
   TextButton,
-  Logo,
   SignInText,
   Link,
   BottomTexts,
@@ -23,16 +23,16 @@ export function StartPage() {
       <Container>
         <GradientBackground />
         <Header>
-          <Logo source={require("../../assets/qfinanceLogo.png")} />
+          <HeaderLogo />
         </Header>
         <CardsImage source={require("../../assets/cards.png")} />
         <Footer>
           <Title>Tome o controle das suas finanças!</Title>
 
           <StartButton>
-            <RadialBackgroundButton>
+            <LinearBackgroundButton>
               <TextButton>Começe agora!</TextButton>
-            </RadialBackgroundButton>
+            </LinearBackgroundButton>
           </StartButton>
 
           <BottomTexts>

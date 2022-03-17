@@ -3,7 +3,7 @@ import {
   getBottomSpace,
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -65,11 +65,6 @@ export const TextButton = styled.Text`
   font-size: ${RFValue(16)}px;
   font-family: ${({ theme }) => theme.fonts.medium};
   color: ${({ theme }) => theme.colors.fontsColor};
-`;
-
-export const Logo = styled.Image`
-  left: -20px;
-  top: -20px;
 `;
 
 export const SignInText = styled.Text`

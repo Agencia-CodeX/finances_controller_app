@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-export function RadialBackgroundButton({ children }: Props) {
+export function LinearBackgroundButton({ children }: Props) {
   return (
     <Container>
       <BackgroundButton
