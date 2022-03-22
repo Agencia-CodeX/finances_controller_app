@@ -2,8 +2,8 @@ interface ICreateUserDTO {
   id?: string;
   name: string;
   email: string;
-  senha: string;
-  periodo?: string;
+  password: string;
+  period?: string;
   avatar?: string;
 }
 
