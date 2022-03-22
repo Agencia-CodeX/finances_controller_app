@@ -3,11 +3,13 @@ package com.client;
 import android.os.Build;
 import android.os.Bundle;
 
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
 import expo.modules.ReactActivityDelegateWrapper;
+
 
 public class MainActivity extends ReactActivity {
   @Override
@@ -54,4 +56,5 @@ public class MainActivity extends ReactActivity {
     // because it's doing more than {@link Activity#moveTaskToBack} in fact.
     super.invokeDefaultOnBackPressed();
   }
+
 }
