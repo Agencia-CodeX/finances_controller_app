@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express from "express";
 
-import "../../../database/infra/typeorm";
+import "./typeorm";
 import { router } from "./routes";
 
 const app = express();
