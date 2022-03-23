@@ -16,9 +16,6 @@ class User {
   password: string;
 
   @Column()
-  period: string;
-
-  @Column()
   avatar: string;
 
   @CreateDateColumn()

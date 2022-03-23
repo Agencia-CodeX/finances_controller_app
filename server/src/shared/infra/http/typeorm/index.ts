@@ -6,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = "qfinances_database";
+  newOptions.host = "database_QFinance_Service";
   createConnection({
     ...options,
   });
