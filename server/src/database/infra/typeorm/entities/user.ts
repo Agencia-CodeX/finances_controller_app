@@ -1,31 +1,31 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("users")
+@Entity("User")
 class User {
-  @PrimaryColumn()
-  id: string;
+    @PrimaryColumn()
+    IdUsers: string;
 
-  @Column()
-  name: string;
+    @Column()
+    Name: string;
 
-  @Column()
-  email: string;
+    @Column()
+    Email: string;
 
-  @Column()
-  password: string;
+    @Column()
+    Password: string;
 
-  @Column()
-  avatar: string;
+    @Column()
+    Avatar: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+    @CreateDateColumn()
+    Created_at: Date;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
+    constructor() {
+        if (!this.IdUsers) {
+            this.IdUsers = uuidV4();
+        }
     }
-  }
 }
 
 export { User };

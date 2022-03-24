@@ -4,6 +4,8 @@ import express from "express";
 import "./typeorm";
 import { router } from "./routes";
 
+import "../../container";
+
 const app = express();
 
 app.use(express.json());

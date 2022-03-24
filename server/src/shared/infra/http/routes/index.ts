@@ -1,9 +1,9 @@
 import { Router } from "express";
 
+import { usersRoutes } from "./users.routes";
+
 const router = Router();
 
-router.get("/", (req, res) => {
-  return res.json({ message: "Server is running!" });
-});
+router.use("/users", usersRoutes);
 
 export { router };
