@@ -1,10 +1,9 @@
 interface ICreateUserDTO {
-  id?: string;
-  name: string;
-  email: string;
-  password: string;
-  period?: string;
-  avatar?: string;
+    IdUsers?: string;
+    Name: string;
+    Email: string;
+    Password: string;
+    Avatar?: string;
 }
 
 export { ICreateUserDTO };
