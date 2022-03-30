@@ -27,6 +27,7 @@ export class CreateBudget1648079017205 implements MigrationInterface {
                     {
                         name: "IsActive",
                         type: "boolean",
+                        default: true,
                     },
                     {
                         name: "FK_User_IdUser",

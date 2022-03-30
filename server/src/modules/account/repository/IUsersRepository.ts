@@ -1,4 +1,4 @@
-import { User } from "../../../database/infra/typeorm/entities/user";
+import { User } from "../infra/typeorm/entities/user";
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 
 interface IUsersRepository {

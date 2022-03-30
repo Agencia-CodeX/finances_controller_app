@@ -4,7 +4,7 @@
     "username": "QFinance",
     "password": "Ab12345@",
     "database": "QFinance",
-    "entities": ["./src/database/infra/typeorm/entities/*.ts"],
+    "entities": ["./src/modules/**/entities/*.ts"],
     "migrations": ["./src/shared/infra/http/typeorm/migrations/*.ts"],
     "cli": {
         "migrationsDir": "./src/shared/infra/http/typeorm/migrations/"
