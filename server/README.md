@@ -58,7 +58,8 @@
 
 ## Regras de negócio 
 
-- Deve ser adicionado a data final com o valor da data atual do budget em que IsActive possui o valor "true".
+- No budget em que IsActive possui o valor "true" deve se adicionar a data atual como valor do campo data final.
+
 # Cadastro de Spending Categories
 
 ## Requisito Funcional
