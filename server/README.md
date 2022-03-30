@@ -48,7 +48,7 @@
 
 ## Regras de negócio 
 
-- Sem que um novo budget de um usuário for criado deve-se preencher o campo IsActive para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false".
+- Sempre que um novo budget de um usuário for criado deve-se preencher o campo IsActive para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false".
 
 # Listagem de Budget
 
@@ -58,8 +58,7 @@
 
 ## Regras de negócio 
 
-- Deve ser adicionado uma data final do budget no retorno, que será igual a data de criação do próximo budget do usuário criado, caso não haja budget criado após ele verificar se ele está com o campo IsActive com o valor "true", senão disparar um erro 500, se sim definir a data final como a data atual.
-
+- Deve ser adicionado a data final com o valor da data atual do budget em que IsActive possui o valor "true".
 # Cadastro de Spending Categories
 
 ## Requisito Funcional
