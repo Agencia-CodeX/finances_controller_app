@@ -48,7 +48,7 @@
 
 ## Regras de negócio 
 
-- Sempre que um novo budget de um usuário for criado deve-se preencher o campo IsActive para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false".
+- Sempre que um novo budget de um usuário for criado deve-se preencher o campo IsActive para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false" e sua data fim para a data atual.
 
 # Listagem de Budget
 
