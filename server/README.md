@@ -92,7 +92,7 @@
 
 ## Regras de negócio
 
-- A rota irá receber um json com uma lista de todos as User Spending Categories desejadas, deve se após o recebimento comparar as categorias ja cadastradas com as solicitadas pelo json, [x] As categorias presentes no 2 não vem sofrer nenhuma alteração, [x] As categorias presentes no json mas ainda não cadastradas devem ser adicionadas, [x] As categorias Cadastradas que não estão presentes no json deve ser deletadas.
+- A rota irá receber um json com uma lista de todas as User Spending Categories desejadas, deve se após o recebimento comparar as categorias ja cadastradas com as solicitadas pelo json, [x] As categorias presentes nos 2 não vem sofrer nenhuma alteração, [x] As categorias presentes no json mas ainda não cadastradas devem ser adicionadas, [x] As categorias Cadastradas que não estão presentes no json deve ser deletadas.
 
 # Listagem de User Spending Categories
 
