@@ -1,9 +1,3 @@
 /*.js
-mobile/*.js
-mobile/node_modules
-web/*.js
-web/node_modules
 node_modules
-server/dist
-server/node_modules
 styled.d.ts

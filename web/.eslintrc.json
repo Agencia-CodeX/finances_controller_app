@@ -1,8 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2021": true,
-        "jest": true
+        "es2021": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -48,6 +47,9 @@
         "no-empty-function": "off",
         "lines-between-class-members": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/function-component-definition": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -84,3 +86,4 @@
         }
     }
 }
+
