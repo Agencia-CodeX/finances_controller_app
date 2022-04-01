@@ -37,7 +37,7 @@ export class CreateBudget1648079017205 implements MigrationInterface {
                 foreignKeys: [
                     {
                         name: "FK_User_Budget",
-                        referencedTableName: "User",
+                        referencedTableName: "Users",
                         referencedColumnNames: ["IdUsers"],
                         columnNames: ["FK_User_IdUser"],
                         onDelete: "CASCADE",

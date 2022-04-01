@@ -6,7 +6,7 @@ export class CreateUserSpendingCategories1648078923524
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "User Spending Categories",
+                name: "Users Spending Categories",
                 columns: [
                     {
                         name: "FK_SpendingCategory_IdCategory",
@@ -29,7 +29,7 @@ export class CreateUserSpendingCategories1648078923524
                     },
                     {
                         name: "FK_User_USP",
-                        referencedTableName: "User",
+                        referencedTableName: "Users",
                         referencedColumnNames: ["IdUsers"],
                         columnNames: ["FK_User_IdUser"],
                         onDelete: "CASCADE",
@@ -40,6 +40,6 @@ export class CreateUserSpendingCategories1648078923524
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("User Spending Categories");
+        await queryRunner.dropTable("Users Spending Categories");
     }
 }

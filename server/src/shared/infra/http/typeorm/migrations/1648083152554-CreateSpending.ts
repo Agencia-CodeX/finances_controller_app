@@ -43,7 +43,7 @@ export class CreateSpending1648083152554 implements MigrationInterface {
                     },
                     {
                         name: "FK_User_Spending",
-                        referencedTableName: "User",
+                        referencedTableName: "Users",
                         referencedColumnNames: ["IdUsers"],
                         columnNames: ["FK_User_IdUser"],
                         onDelete: "CASCADE",

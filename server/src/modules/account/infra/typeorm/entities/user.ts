@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("User")
-class User {
+@Entity("Users")
+class Users {
     @PrimaryColumn()
     IdUsers: string;
 
@@ -21,6 +21,12 @@ class User {
     @Column()
     IsAdmin: boolean;
 
+    @Column()
+    IsVip: boolean;
+
+    @Column()
+    VipExpiresDate: Date;
+
     @CreateDateColumn()
     Created_at: Date;
 
@@ -31,4 +37,4 @@ class User {
     }
 }
 
-export { User };
+export { Users };

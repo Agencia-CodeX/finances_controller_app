@@ -11,12 +11,12 @@ async function create() {
     const password = await hash("admin", 8);
 
     await connection.query(
-        `INSERT INTO USERS(IdUsers, Name, Email, Password, "isAdmin", Created_at)
-            values ('${id}', 'admin', 'admin@qfinances.com.br', '${password}', 'true', 'now()')
+        `INSERT INTO "Users"("IdUsers", "Name", "Email", "Password", "IsAdmin", "Created_at", "IsVip")
+            values ('${id}', 'admin', 'admin@qfinances.com.br', '${password}', 'true', 'now()', 'false')
         `
     );
 
     await connection.close();
 }
 
-create().then(() => console.log("User admin created!"));
+create().then(() => console.log("Users admin created!"));

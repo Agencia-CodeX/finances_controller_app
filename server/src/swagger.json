@@ -11,7 +11,7 @@
     "paths": {
         "/users": {
             "post": {
-                "tags": ["User"],
+                "tags": ["Users"],
                 "summary": "Create a user",
                 "description": "Create a new user",
                 "requestBody": {
@@ -31,9 +31,9 @@
                                 }
                             },
                             "example": {
-                                "Name": "User name sample",
-                                "Email": "User email sample",
-                                "Password": "User Password sample"
+                                "Name": "Users name sample",
+                                "Email": "Users email sample",
+                                "Password": "Users Password sample"
                             }
                             }
 

@@ -4,6 +4,8 @@ interface ICreateUserDTO {
     Email: string;
     Password: string;
     Avatar?: string;
+    IsVip?: boolean;
+    VipExpiresDate?: Date;
 }
 
 export { ICreateUserDTO };

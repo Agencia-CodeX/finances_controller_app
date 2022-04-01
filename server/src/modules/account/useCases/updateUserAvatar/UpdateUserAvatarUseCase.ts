@@ -19,7 +19,7 @@ class UpdateUserAvatarUseCase {
         const user = await this.usersRepository.findById(user_id);
 
         if (!user) {
-            throw new AppError("User not found!");
+            throw new AppError("Users not found!");
         }
 
         if (user.Avatar) {

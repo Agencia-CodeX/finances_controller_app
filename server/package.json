@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:Agencia-CodeX/finances_controller_app.git",
-  "author": "MiguelMarcola <miguelmarcola@gmail.com>",
+  "author": "MiguelMarcola <miguelmarcola@gmail.com, pedrohlimadev@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
+    "seed:admin": "ts-node-dev src/shared/infra/http/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -17,10 +17,12 @@
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "multer": "^1.4.4",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.3.0",
+    "tsconfig-paths": "^3.14.1",
     "tsyringe": "^4.6.0",
     "typeorm": "^0.2.45",
     "uuid": "^8.3.2"

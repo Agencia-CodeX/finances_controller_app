@@ -1,16 +1,16 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-import { User } from "../../../../account/infra/typeorm/entities/user";
+import { Users } from "../../../../account/infra/typeorm/entities/user";
 
 @Entity("Budget")
 class Budget {
     @PrimaryColumn()
     IdBudget: string;
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => Users)
     @JoinColumn({ name: "FK_User_IdUser" })
-    user: User;
+    user: Users;
 
     @Column()
     FK_User_IdUser: string;

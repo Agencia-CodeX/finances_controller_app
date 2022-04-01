@@ -1,13 +1,28 @@
-import { createConnection, getConnectionOptions } from "typeorm";
+import { createConnection, getConnectionOptions, Connection } from "typeorm";
 
-interface IOptions {
-    host: string;
-}
+export default async (
+    host = "database_QFinance_Service"
+): Promise<Connection> => {
+    const defaultOptions = await getConnectionOptions();
 
-getConnectionOptions().then((options) => {
-    const newOptions = options as IOptions;
-    newOptions.host = "database_QFinance_Service";
-    createConnection({
-        ...options,
-    });
-});
+    return createConnection(
+        Object.assign(defaultOptions, {
+            host: process.env.NODE_ENV === "test" ? "localhost" : host,
+            database:
+                process.env.NODE_ENV === "test"
+                    ? "rentx_test"
+                    : defaultOptions.database,
+        })
+    );
+};
+
+// export default async (
+//     host: "database_QFinance_Service"
+// ): Promise<Connection> => {
+//     const defaultOptions = await getConnectionOptions();
+//     return createConnection(
+//         Object.assign(defaultOptions, {
+//             host,
+//         })
+//     );
+// };

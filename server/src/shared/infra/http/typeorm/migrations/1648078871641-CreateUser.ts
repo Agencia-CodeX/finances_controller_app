@@ -4,7 +4,7 @@ export class CreateUser1648078871641 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "User",
+                name: "Users",
                 columns: [
                     {
                         name: "IdUsers",
@@ -34,6 +34,16 @@ export class CreateUser1648078871641 implements MigrationInterface {
                         default: false,
                     },
                     {
+                        name: "IsVip",
+                        type: "boolean",
+                        default: false,
+                    },
+                    {
+                        name: "VipExpiresDate",
+                        type: "timestamp",
+                        isNullable: true,
+                    },
+                    {
                         name: "Created_at",
                         type: "timestamp",
                         default: "now()",
@@ -44,6 +54,6 @@ export class CreateUser1648078871641 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("User");
+        await queryRunner.dropTable("Users");
     }
 }
