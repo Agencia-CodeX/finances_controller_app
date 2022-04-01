@@ -4,13 +4,13 @@ import { Container, PerfilImage } from "./styles";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 interface Props {
-  urlImage: string;
+    urlImage: string;
 }
 
 export function ProfileImage({ urlImage }: Props) {
-  return (
-    <Container>
-      <PerfilImage source={{ uri: urlImage }} />
-    </Container>
-  );
+    return (
+        <Container>
+            <PerfilImage source={{ uri: urlImage }} />
+        </Container>
+    );
 }
