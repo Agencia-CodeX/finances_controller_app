@@ -12,7 +12,7 @@ class Users {
     @Column()
     Email: string;
 
-    @Column()
+    @Column({ select: false })
     Password: string;
 
     @Column()

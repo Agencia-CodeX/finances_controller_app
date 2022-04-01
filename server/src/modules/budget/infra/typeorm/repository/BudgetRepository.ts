@@ -36,6 +36,15 @@ class BudgetRepository implements IBudgetRepository {
             .setParameters({ IsActive })
             .execute();
     }
+
+    async findByUserId(FK_User_IdUser: string): Promise<Budget[]> {
+        const budgets = await this.repository.find({
+            where: { FK_User_IdUser },
+            relations: ["user"],
+        });
+
+        return budgets;
+    }
 }
 
 export { BudgetRepository };
