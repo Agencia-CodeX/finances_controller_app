@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { SpendindCategory } from "../infra/typeorm/entities/spendindCategory";
-import { ISpendingCategoryRepository } from "../repository/ISpendingCategoryRepository";
+import { SpendindCategory } from "../../infra/typeorm/entities/spendindCategory";
+import { ISpendingCategoryRepository } from "../../repository/ISpendingCategoryRepository";
 
 @injectable()
 class ListSpendingCategoryUseCase {

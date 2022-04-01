@@ -27,7 +27,17 @@ class BudgetRepository implements IBudgetRepository {
         return budget;
     }
 
-    async findAndUpdate(IsActive: boolean): Promise<void> {
+    async findAndUpdateTrue(IsActive: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ IsActive })
+            .where("IsActive = true")
+            .setParameters({ IsActive })
+            .execute();
+    }
+
+    async findAndUpdateFalse(IsActive: boolean): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()

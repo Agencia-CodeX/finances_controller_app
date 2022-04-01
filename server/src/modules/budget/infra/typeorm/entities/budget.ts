@@ -27,6 +27,9 @@ class Budget {
     @Column()
     IsActive: boolean;
 
+    @Column()
+    FinalDate: Date;
+
     constructor() {
         if (!this.IdBudget) {
             this.IdBudget = uuidv4();

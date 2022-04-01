@@ -30,6 +30,11 @@ export class CreateBudget1648079017205 implements MigrationInterface {
                         default: true,
                     },
                     {
+                        name: "FinalDate",
+                        type: "timestamp",
+                        isNullable: true,
+                    },
+                    {
                         name: "FK_User_IdUser",
                         type: "uuid",
                     },
