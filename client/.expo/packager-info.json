@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://m6-4ci.veronezegui.client.exp.direct",
+  "packagerNgrokUrl": "https://m6-4ci.veronezegui.client.exp.direct",
+  "ngrokPid": 6172,
+  "webpackServerPort": null
+}
