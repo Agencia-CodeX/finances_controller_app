@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { validateEmail } from "../../utils/ValidateEmails";
 import { ValidatePassaword } from "../../utils/ValidatePassword";
+import { ValidateSpecialCharacters } from "../../utils/ValidateSpeciaCharacters";
 import styles from "./styles.module.scss";
 
 export function FormRegister() {
@@ -17,6 +18,11 @@ export function FormRegister() {
 
         if (!name) {
             toast.error("Digite seu Nome!");
+            return;
+        }
+
+        if (!ValidateSpecialCharacters(name)) {
+            toast.error("Nome não pode conter caracteres especiais!");
             return;
         }
 
@@ -47,9 +53,11 @@ export function FormRegister() {
 
         if (password !== confirmPassword) {
             toast.error("As senhas não são iguais!");
+            return;
         }
 
         console.log(name, email, password, confirmPassword);
+        toast.success("Conta criada com sucesso!");
 
         setName("");
         setEmail("");
