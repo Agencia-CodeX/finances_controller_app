@@ -1,0 +1,167 @@
+.contentLeft {
+    width: 60%;
+    min-height: 100vh;
+    padding: 18px 0 0 60px;
+    position: relative;
+
+
+    .logo {
+        width: 450px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1.7rem;
+        font-weight: auto;
+    }
+
+    .content {
+        clear: both;
+    }
+
+    .imageBg {
+        min-width: 100%;
+        height: auto;
+
+        img {
+            width: 1050px;
+            position:absolute;
+            bottom: 0;
+            left: 90px;
+        }
+    }
+
+    @media (max-height: 1080px) and (min-width: 1200px){
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        .imageBg {
+            img {
+                width: 800px;
+            }
+        }
+    }
+
+    @media (max-height: 880px) and (min-width: 1200px){
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        .imageBg {
+            img {
+                width: 650px;
+            }
+        }
+    }
+
+    @media (max-height: 810px) and (min-width: 1200px){
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        .imageBg {
+            img {
+                width: 500px;
+            }
+        }
+    }
+
+    @media (max-height: 700px) and (min-width: 1200px){
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+        }
+
+        .imageBg {
+            img {
+                width: 510px;
+            }
+        }
+    }
+
+    @media (max-height: 650px) and (min-width: 1200px){
+        h1 {
+            font-size: 2.0rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .imageBg {
+            img {
+                width: 430px;
+            }
+        }
+    }
+
+    @media (max-height: 600px) and (min-width: 1200px){
+        h1 {
+            font-size: 2.0rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .imageBg {
+            img {
+                width: 550px;
+                position: relative;
+            }
+        }
+    }
+}
+
+@media (max-width: 760px){
+    .contentLeft {
+        width: 100% !important;
+        min-height: auto;
+        padding: 10px;
+        text-align: center;
+
+        .logo {
+            width: 250px;
+        }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+        .imageBg {
+            min-width: 100%;
+            height: auto;
+            margin-top: 20px;
+
+            img {
+                width: 90%;
+                position: relative;
+                left: 10px;
+            }
+        }
+    }
+}
