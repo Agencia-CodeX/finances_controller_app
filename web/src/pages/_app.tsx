@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <ToastContainer
                 position="top-right"
-                autoClose={3000}
+                autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 draggable={false}

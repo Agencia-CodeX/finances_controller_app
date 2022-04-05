@@ -27,16 +27,6 @@ export function FormLogin() {
             return;
         }
 
-        const ValidateStrongPassaword = ValidatePassaword(password);
-        console.log(ValidateStrongPassaword);
-
-        if (!ValidateStrongPassaword.result) {
-            ValidateStrongPassaword.message.map((message) =>
-                toast.error(message)
-            );
-            return;
-        }
-
         console.log(email, password);
 
         setEmail("");

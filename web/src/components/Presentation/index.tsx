@@ -14,10 +14,10 @@ export function Presentation() {
 
                 <div>
                     <h1>Seu dinheiro, seu controle!</h1>
+                    <p>Controle seus limites de gastos através do nosso app</p>
                     <p>
-                        Controle seus limites de gastos através do nosso app
                         Para dados mais precisos obtenha o plano premium na
-                        nossa página na web
+                        nossa página da web
                     </p>
                 </div>
             </div>
