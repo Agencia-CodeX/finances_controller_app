@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import {
     useFonts,
     Poppins_400Regular,
