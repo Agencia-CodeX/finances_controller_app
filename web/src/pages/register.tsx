@@ -1,4 +1,4 @@
-import { FormLogin } from "../components/FormLogin";
+import { FormRegister } from "../components/FormRegister";
 import { Presentation } from "../components/Presentation";
 import styles from "./login.module.scss";
 
@@ -7,7 +7,7 @@ export default function Login() {
         <main className={styles.mainBackground}>
             <div className={styles.content}>
                 <Presentation />
-                <FormLogin />
+                <FormRegister />
             </div>
         </main>
     );
