@@ -9,6 +9,7 @@
         text-align: center;
         font-size: 1.5rem;
         font-weight: 500;
+        margin-bottom: 20px;
     }
 
     .loginButton {
@@ -47,13 +48,12 @@
 }
 
 .formBox {
-    border: 1px rgba(255, 255, 255, 0.5) solid;   
-    border-radius: 1.5rem;     
-    padding: 13px 12px; 
-
-    form {
+        border: 1px rgba(255, 255, 255, 0.5) solid;   
+        border-radius: 1.5rem;     
+        padding: 13px 12px; 
         display: flex;
         flex-direction: column;
+
 
         input {
             background: rgba(255, 255, 255, 0.1) ;
@@ -72,8 +72,7 @@
         ::-webkit-input-placeholder{
             color: var(--white);
             font-weight: bold;
-          }
-    }
+        }
 }
 
 @media (max-width: 600px) {
