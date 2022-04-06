@@ -1,9 +1,45 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import Document, {
+    DocumentContext,
+    DocumentInitialProps,
+    Head,
+    Html,
+    Main,
+    NextScript,
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
+    static async getInitialProps(
+        ctx: DocumentContext
+    ): Promise<DocumentInitialProps> {
+        const sheet = new ServerStyleSheet();
+        const originalRenderPage = ctx.renderPage;
+
+        try {
+            ctx.renderPage = () =>
+                originalRenderPage({
+                    enhanceApp: (App) => (props) =>
+                        sheet.collectStyles(<App {...props} />),
+                });
+
+            const initialProps = await Document.getInitialProps(ctx);
+            return {
+                ...initialProps,
+                styles: (
+                    <>
+                        {initialProps.styles}
+                        {sheet.getStyleElement()}
+                    </>
+                ),
+            };
+        } finally {
+            sheet.seal();
+        }
+    }
     render() {
         return (
-            <Html>
+            <Html lang="pt">
+                <meta httpEquiv="Content-Language" content="pt-br" />
                 <Head>
                     <link
                         rel="preconnect"
@@ -14,6 +50,7 @@ export default class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
                         rel="stylesheet"
                     />
+                    <link rel="icon" href="/images/icon.png" />
                 </Head>
                 <body>
                     <Main />

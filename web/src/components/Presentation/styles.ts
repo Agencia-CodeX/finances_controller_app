@@ -1,13 +1,26 @@
-.contentLeft {
+import styled from "styled-components";
+
+export const ImageBg = styled.div`
+    min-width: 100%;
+    height: auto;
+
+    img {
+        width: 1050px;
+        position: absolute;
+        bottom: 0;
+        left: 90px;
+    }
+`;
+
+export const Logo = styled.img`
+    width: 450px;
+`;
+
+export const ContentLeft = styled.section`
     width: 60%;
     min-height: 100vh;
     padding: 18px 0 0 60px;
     position: relative;
-
-
-    .logo {
-        width: 450px;
-    }
 
     h1 {
         font-size: 3.5rem;
@@ -19,23 +32,7 @@
         font-weight: auto;
     }
 
-    .content {
-        clear: both;
-    }
-
-    .imageBg {
-        min-width: 100%;
-        height: auto;
-
-        img {
-            width: 1050px;
-            position:absolute;
-            bottom: 0;
-            left: 90px;
-        }
-    }
-
-    @media (max-height: 1080px) and (min-width: 1200px){
+    @media (max-height: 1080px) and (min-width: 1200px) {
         h1 {
             font-size: 3rem;
         }
@@ -44,14 +41,14 @@
             font-size: 1.5rem;
         }
 
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 800px;
             }
         }
     }
 
-    @media (max-height: 880px) and (min-width: 1200px){
+    @media (max-height: 810px) and (min-width: 1200px) {
         h1 {
             font-size: 2.5rem;
         }
@@ -60,30 +57,14 @@
             font-size: 1.5rem;
         }
 
-        .imageBg {
-            img {
-                width: 650px;
-            }
-        }
-    }
-
-    @media (max-height: 810px) and (min-width: 1200px){
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        p {
-            font-size: 1.5rem;
-        }
-
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 500px;
             }
         }
     }
 
-    @media (max-height: 700px) and (min-width: 1200px){
+    @media (max-height: 700px) and (min-width: 1200px) {
         h1 {
             font-size: 2rem;
         }
@@ -92,65 +73,63 @@
             font-size: 1.3rem;
         }
 
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 510px;
             }
         }
     }
 
-    @media (max-height: 650px) and (min-width: 1200px){
+    @media (max-height: 650px) and (min-width: 1200px) {
         h1 {
-            font-size: 2.0rem;
+            font-size: 2rem;
         }
 
         p {
             font-size: 1.2rem;
         }
 
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 430px;
             }
         }
     }
 
-    @media (max-height: 600px) and (min-width: 1200px){
+    @media (max-height: 600px) and (min-width: 1200px) {
         h1 {
-            font-size: 2.0rem;
+            font-size: 2rem;
         }
 
         p {
             font-size: 1.2rem;
         }
 
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 550px;
                 position: relative;
             }
         }
     }
-}
 
-@media (max-width: 1200px) and (min-height: 710px){
-    .contentLeft {
+    @media (max-width: 1200px) and (min-height: 710px) {
         padding: 10px;
         text-align: center;
 
-        .logo {
+        ${Logo} {
             width: 350px;
         }
 
-            h1 {
-                font-size: 2.5rem;
-            }
+        h1 {
+            font-size: 2.5rem;
+        }
 
-            p {
-                font-size: 1.5rem;
-            }
+        p {
+            font-size: 1.5rem;
+        }
 
-        .imageBg {
+        ${ImageBg} {
             min-width: 100%;
             height: auto;
             margin-top: 20px;
@@ -160,26 +139,26 @@
             }
         }
     }
-}
 
-@media (max-width: 1200px) and (max-height: 710px){
-    .contentLeft {
+    @media (max-width: 1200px) and (max-height: 710px) {
+        width: 90%;
+        margin: 0 auto;
         padding: 10px 10px 0 10px;
         text-align: center;
 
-        .logo {
+        ${Logo} {
             width: 350px;
         }
 
-            h1 {
-                font-size: 2.5rem;
-            }
+        h1 {
+            font-size: 2.5rem;
+        }
 
-            p {
-                font-size: 1.5rem;
-            }
+        p {
+            font-size: 1.5rem;
+        }
 
-        .imageBg {
+        ${ImageBg} {
             min-width: 100%;
             height: auto;
             margin-top: 20px;
@@ -192,15 +171,14 @@
             }
         }
     }
-}
-@media (max-width: 1050px) and (min-height: 1000px){
-    .contentLeft {
+
+    @media (max-width: 1050px) and (min-height: 1000px) {
         width: 90%;
         margin: 0 auto;
         min-height: auto;
         padding: 10px;
 
-        .imageBg {
+        ${ImageBg} {
             img {
                 width: 90%;
                 position: relative;
@@ -208,29 +186,27 @@
                 bottom: 0;
             }
         }
-    }    
-}
+    }
 
-@media (max-width: 800px){
-    .contentLeft {
+    @media (max-width: 800px) {
         width: 100%;
         min-height: auto;
         padding: 10px;
         text-align: center;
 
-        .logo {
+        ${Logo} {
             width: 250px;
         }
 
-            h1 {
-                font-size: 2rem;
-            }
+        h1 {
+            font-size: 2rem;
+        }
 
-            p {
-                font-size: 1rem;
-            }
+        p {
+            font-size: 1rem;
+        }
 
-        .imageBg {
+        ${ImageBg} {
             min-width: 100%;
             height: auto;
             margin-top: 20px;
@@ -242,4 +218,4 @@
             }
         }
     }
-}
+`;

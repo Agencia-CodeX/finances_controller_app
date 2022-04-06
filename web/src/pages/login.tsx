@@ -1,14 +1,14 @@
 import { FormLogin } from "../components/FormLogin";
 import { Presentation } from "../components/Presentation";
-import styles from "./login.module.scss";
+import { ContentLogin, MainBackgroundLogin } from "../styles/login";
 
 export default function Login() {
     return (
-        <main className={styles.mainBackground}>
-            <div className={styles.content}>
+        <MainBackgroundLogin>
+            <ContentLogin>
                 <Presentation />
                 <FormLogin />
-            </div>
-        </main>
+            </ContentLogin>
+        </MainBackgroundLogin>
     );
 }

@@ -2,8 +2,7 @@ import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 
 import { validateEmail } from "../../utils/ValidateEmails";
-import { ValidatePassaword } from "../../utils/ValidatePassword";
-import styles from "./styles.module.scss";
+import { ContentForm, FormBox, LoginButton, RegisterButton } from "./styles";
 
 export function FormLogin() {
     const [email, setEmail] = useState("");
@@ -34,9 +33,9 @@ export function FormLogin() {
     }
 
     return (
-        <section className={styles.contentForm}>
+        <ContentForm>
             <form onSubmit={handleLogin}>
-                <div className={styles.formBox}>
+                <FormBox>
                     <h4>Login</h4>
                     <input
                         type="text"
@@ -50,18 +49,14 @@ export function FormLogin() {
                         value={password}
                         onChange={(event) => setPassaword(event.target.value)}
                     />
-                </div>
-                <button className={styles.loginButton} type="submit">
-                    Entrar
-                </button>
+                </FormBox>
+                <LoginButton type="submit">Entrar</LoginButton>
             </form>
 
             <a href="/register">
-                <button className={styles.registerButton} type="button">
-                    Cadastrar-se
-                </button>
+                <RegisterButton type="button">Cadastrar-se</RegisterButton>
             </a>
             <img src="/images/codex_logo_mini.svg" alt="Codex Logo" />
-        </section>
+        </ContentForm>
     );
 }

@@ -1,15 +1,11 @@
-import styles from "./styles.module.scss";
+import { ContentLeft, ImageBg, Logo } from "./styles";
 
 export function Presentation() {
     return (
-        <section className={styles.contentLeft}>
-            <div className={styles.content}>
+        <ContentLeft>
+            <div>
                 <div>
-                    <img
-                        src="/images/logo.svg"
-                        alt="Qfinances logo"
-                        className={styles.logo}
-                    />
+                    <Logo src="/images/logo.svg" alt="Qfinances logo" />
                 </div>
 
                 <div>
@@ -21,9 +17,9 @@ export function Presentation() {
                     </p>
                 </div>
             </div>
-            <div className={styles.imageBg}>
+            <ImageBg>
                 <img src="/images/cards.svg" alt="Cards" />
-            </div>
-        </section>
+            </ImageBg>
+        </ContentLeft>
     );
 }

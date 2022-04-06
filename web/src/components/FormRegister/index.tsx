@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { validateEmail } from "../../utils/ValidateEmails";
 import { ValidatePassaword } from "../../utils/ValidatePassword";
 import { ValidateSpecialCharacters } from "../../utils/ValidateSpeciaCharacters";
-import styles from "./styles.module.scss";
+import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
 export function FormRegister() {
     const [name, setName] = useState("");
@@ -66,9 +66,9 @@ export function FormRegister() {
     }
 
     return (
-        <section className={styles.contentForm}>
+        <ContentForm>
             <form onSubmit={handleRegister}>
-                <div className={styles.formBox}>
+                <FormBox>
                     <h4>Cadastro</h4>
                     <input
                         type="text"
@@ -96,18 +96,16 @@ export function FormRegister() {
                             setConfirmPassroword(event.target.value)
                         }
                     />
-                </div>
-                <button className={styles.registerButton} type="submit">
-                    Cadastrar
-                </button>
+                </FormBox>
+                <RegisterButton type="submit">Cadastrar</RegisterButton>
             </form>
 
-            <div className={styles.returnButton}>
+            <ReturnButton>
                 <a href="/login">
-                    <HiOutlineArrowNarrowLeft className={styles.icon} /> Voltar
+                    <HiOutlineArrowNarrowLeft /> Voltar
                 </a>
-            </div>
+            </ReturnButton>
             <img src="/images/codex_logo_mini.svg" alt="Codex Logo" />
-        </section>
+        </ContentForm>
     );
 }
