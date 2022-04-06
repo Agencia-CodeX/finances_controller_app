@@ -9,14 +9,17 @@ export class CreateUserSpendingCategories1648078923524
                 name: "Users Spending Categories",
                 columns: [
                     {
-                        name: "FK_SpendingCategory_IdCategory",
+                        name: "UserSpendingCategoryId",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
+                        name: "FK_SpendingCategory_IdCategory",
+                        type: "uuid",
+                    },
+                    {
                         name: "FK_User_IdUser",
                         type: "uuid",
-                        isPrimary: true,
                     },
                 ],
                 foreignKeys: [

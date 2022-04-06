@@ -3,6 +3,11 @@ import { inject, injectable } from "tsyringe";
 import { SpendindCategory } from "../../infra/typeorm/entities/spendindCategory";
 import { ISpendingCategoryRepository } from "../../repository/ISpendingCategoryRepository";
 
+interface IRequest {
+    initialDate?: Date;
+    endDate?: Date;
+}
+
 @injectable()
 class ListSpendingCategoryUseCase {
     constructor(
@@ -10,9 +15,15 @@ class ListSpendingCategoryUseCase {
         private spendingCategoryRepository: ISpendingCategoryRepository
     ) {}
 
-    async execute(): Promise<SpendindCategory[]> {
+    async execute({
+        initialDate,
+        endDate,
+    }: IRequest): Promise<SpendindCategory[]> {
         const spendingCategories =
-            await this.spendingCategoryRepository.listAll();
+            await this.spendingCategoryRepository.listByUser(
+                initialDate,
+                endDate
+            );
 
         return spendingCategories;
     }

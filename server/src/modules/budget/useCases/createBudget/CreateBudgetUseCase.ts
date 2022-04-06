@@ -16,7 +16,7 @@ class CreateBudgetUseCase {
     ) {}
 
     async execute({ Budget, Period, FK_User_IdUser }: IRequest): Promise<void> {
-        await this.budgetRepository.findAndUpdate(false);
+        await this.budgetRepository.findAndUpdateFalse(false);
         await this.budgetRepository.create({
             Budget,
             Period,

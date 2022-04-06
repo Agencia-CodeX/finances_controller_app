@@ -1,7 +1,9 @@
+import { ICreateSpendingCategoryDTO } from "../dtos/ICreateSpendingCategoryDTO";
 import { SpendindCategory } from "../infra/typeorm/entities/spendindCategory";
 
 interface ISpendingCategoryRepository {
-    listAll(): Promise<SpendindCategory[]>;
+    listByUser(initialDate: Date, endDate: Date): Promise<SpendindCategory[]>;
+    create(data: ICreateSpendingCategoryDTO): Promise<SpendindCategory>;
 }
 
 export { ISpendingCategoryRepository };

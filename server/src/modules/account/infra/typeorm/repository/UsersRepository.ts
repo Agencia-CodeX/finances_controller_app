@@ -1,7 +1,7 @@
 import moment from "moment";
 import { getRepository, Repository } from "typeorm";
-import { AppError } from "../../../../../shared/errors/App.Error";
 
+import { AppError } from "../../../../../shared/errors/App.Error";
 import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../../repository/IUsersRepository";
 import { Users } from "../entities/user";
@@ -49,16 +49,16 @@ class UsersRepository implements IUsersRepository {
         const user = await this.repository.findOne(IdUsers);
         user.IsVip = true;
 
-        if (period === "mensal") {
+        if (period === "mounth") {
             const dateNow = moment();
             const dateAfter = dateNow.add(1, "month").toDate();
             user.VipExpiresDate = dateAfter;
-        } else if (period === "anual") {
+        } else if (period === "year") {
             const dateNow = moment();
             const dateAfter = dateNow.add(1, "year").toDate();
             user.VipExpiresDate = dateAfter;
         } else {
-            throw new AppError("Coloca 'mensal' ou 'anual ai ne meu amigo'");
+            throw new AppError("Invalid date!");
         }
 
         return user;

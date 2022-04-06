@@ -59,7 +59,7 @@
 ## Regras de negócio 
 
 - No budget em que IsActive possui o valor "true" deve se adicionar a data atual como valor do campo data final.
-
+################################################################################
 # Cadastro de Spending Categories
 
 ## Requisito Funcional
@@ -81,7 +81,7 @@
 - Deve ser possível listar todas as Spending Categories cadastradas.
 
 - Deve ser possível remover uma ou várias Users Spending Categories do usuário.
-
+#################################################################################
 # Cadastro e Remoção de Users Spending Categories
 
 ## Requisito Funcional

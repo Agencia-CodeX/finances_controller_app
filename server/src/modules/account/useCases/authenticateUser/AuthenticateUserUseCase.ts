@@ -14,6 +14,7 @@ interface IResponse {
     user: {
         Name: string;
         Email: string;
+        IsVip: boolean;
     };
     token: string;
 }
@@ -48,6 +49,7 @@ class AuthenticateUserUseCase {
             user: {
                 Name: user.Name,
                 Email: user.Email,
+                IsVip: user.IsVip,
             },
         };
 
