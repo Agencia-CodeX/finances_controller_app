@@ -1,14 +1,21 @@
+import Head from "next/head";
+
 import { FormRegister } from "../components/FormRegister";
 import { Presentation } from "../components/Presentation";
-import { MainBackgroundRegister, ContentRegister } from "../styles/register";
+import { Content, MainBackground } from "../styles/login-register";
 
 export default function Login() {
     return (
-        <MainBackgroundRegister>
-            <ContentRegister>
-                <Presentation />
-                <FormRegister />
-            </ContentRegister>
-        </MainBackgroundRegister>
+        <>
+            <Head>
+                <title>QFinance | Login</title>
+            </Head>
+            <MainBackground>
+                <Content>
+                    <Presentation />
+                    <FormRegister />
+                </Content>
+            </MainBackground>
+        </>
     );
 }

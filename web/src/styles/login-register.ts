@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const MainBackgroundLogin = styled.main`
+export const MainBackground = styled.main`
     width: 100%;
     background-image: url("/images/bg_image.png");
     background-size: cover;
     background-repeat: no-repeat;
 `;
 
-export const ContentLogin = styled.div`
+export const Content = styled.div`
     max-width: 1600px;
     margin: 0 auto;
     display: flex;

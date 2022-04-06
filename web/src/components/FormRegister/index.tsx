@@ -51,6 +51,11 @@ export function FormRegister() {
             return;
         }
 
+        if (!confirmPassword) {
+            toast.error("Confirme sua senha!");
+            return;
+        }
+
         if (password !== confirmPassword) {
             toast.error("As senhas não são iguais!");
             return;
