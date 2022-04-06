@@ -1,14 +1,21 @@
+import Head from "next/head";
+
 import { FormLogin } from "../components/FormLogin";
 import { Presentation } from "../components/Presentation";
-import styles from "./login.module.scss";
+import { Content, MainBackground } from "../styles/login-register";
 
 export default function Login() {
     return (
-        <main className={styles.mainBackground}>
-            <div className={styles.content}>
-                <Presentation />
-                <FormLogin />
-            </div>
-        </main>
+        <>
+            <Head>
+                <title>QFinance | Login</title>
+            </Head>
+            <MainBackground>
+                <Content>
+                    <Presentation />
+                    <FormLogin />
+                </Content>
+            </MainBackground>
+        </>
     );
 }
