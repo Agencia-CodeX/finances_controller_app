@@ -1,0 +1,84 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Qfinances Documentation",
+        "description": "This is an API for finances APP",
+        "version": "1.0.0",
+        "contact": {
+            "email": "pedrohlimadev@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create a user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Password": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "Name": "Users name sample",
+                                "Email": "Users email sample",
+                                "Password": "Users Password sample"
+                            }
+                            }
+
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/sessions": {
+            "post": {
+                "tags": ["Sessions"],
+                "summary": "Authenticate user",
+                "description": "Authenticate a user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Email": {
+                                        "type": "string"
+                                    },
+                                    "Password": {
+                                        "type": "string"
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "descritpion": "Sucess"
+                    },
+                    "400": {
+                        "description": "Email or password incorrect"
+                    }
+                }
+            }
+        }
+    }
+}
+
