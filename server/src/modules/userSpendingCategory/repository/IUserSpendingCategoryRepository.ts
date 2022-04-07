@@ -6,6 +6,11 @@ interface IUserSpendingCategoryRepository {
     findById(
         FK_SpendingCategory_IdCategory: string
     ): Promise<UserSpendingCategory>;
+    listByDate(
+        user_id: string,
+        initialDate: Date,
+        endDate: Date
+    ): Promise<UserSpendingCategory[]>;
 }
 
 export { IUserSpendingCategoryRepository };

@@ -35,6 +35,35 @@ class UserSpendingCategoryRepository
 
         return userCategory;
     }
+
+    async listByDate(
+        user_id: string,
+        initialDate?: Date,
+        endDate?: Date
+    ): Promise<UserSpendingCategory[]> {
+        const userSpendingCategoriesQuery = this.repository
+            .createQueryBuilder("c")
+            .where('"FK_User_IdUser" = :id', { id: user_id });
+
+        if (initialDate) {
+            userSpendingCategoriesQuery.andWhere(
+                '"Created_at" > :initialDate',
+                {
+                    initialDate,
+                }
+            );
+        }
+        if (endDate) {
+            userSpendingCategoriesQuery.andWhere('"Created_at" < :endDate', {
+                endDate,
+            });
+        }
+
+        const userSpendingCategories =
+            await userSpendingCategoriesQuery.getMany();
+
+        return userSpendingCategories;
+    }
 }
 
 export { UserSpendingCategoryRepository };
