@@ -8,7 +8,7 @@ export default function Login() {
     return (
         <>
             <Head>
-                <title>QFinance | Login</title>
+                <title>QFinance | Registro</title>
             </Head>
             <MainBackground>
                 <Content>

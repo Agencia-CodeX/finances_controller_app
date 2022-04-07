@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +8,9 @@ import { GlobalStyle } from "../styles/global";
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
+            <Head>
+                <title>QFinance</title>
+            </Head>
             <GlobalStyle />
             <Component {...pageProps} />
             <ToastContainer

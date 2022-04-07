@@ -51,8 +51,6 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                     />
                     <link rel="icon" href="/images/icon.png" />
-
-                    <title>QFinance</title>
                 </Head>
                 <body>
                     <Main />

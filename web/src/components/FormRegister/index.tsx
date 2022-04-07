@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { toast } from "react-toastify";
 
+import { api } from "../../service/api";
 import { validateEmail } from "../../utils/ValidateEmails";
 import { ValidatePassaword } from "../../utils/ValidatePassword";
 import { ValidateSpecialCharacters } from "../../utils/ValidateSpeciaCharacters";
@@ -42,7 +43,6 @@ export function FormRegister() {
         }
 
         const ValidateStrongPassaword = ValidatePassaword(password);
-        console.log(ValidateStrongPassaword);
 
         if (!ValidateStrongPassaword.result) {
             ValidateStrongPassaword.message.map((message) =>
@@ -61,13 +61,22 @@ export function FormRegister() {
             return;
         }
 
-        console.log(name, email, password, confirmPassword);
-        toast.success("Conta criada com sucesso!");
+        await api
+            .post("users", {
+                Name: name,
+                Email: email,
+                Password: password,
+            })
+            .then(() => {
+                window.location.href = "/new-user";
+            })
+            .catch((error) => {
+                if (error.response.data.error === "Users already exists!") {
+                    toast.error("E-mail já cadastrado!");
+                }
+            });
 
-        setName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassroword("");
+        // message, config, code, request, response
     }
 
     return (
