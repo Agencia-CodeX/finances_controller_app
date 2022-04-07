@@ -1,10 +1,19 @@
-// import { Request, Response } from "express";
+import { Request, Response } from "express";
+import { container } from "tsyringe";
 
-// class UploadSpendingCategoriesController {
-//     async handle(request: Request, response: Response) {
-//         const { file } = request;
-//         return response.send();
-//     }
-// }
+import { UploadSpendingCategoriesUseCase } from "./UploadSpendingCategoriesUseCase";
 
-// export { UploadSpendingCategoriesController };
+class UploadSpendingCategoriesController {
+    async handle(request: Request, response: Response) {
+        const { file } = request;
+        const uploadSpendingCategoriesUseCase = container.resolve(
+            UploadSpendingCategoriesUseCase
+        );
+
+        await uploadSpendingCategoriesUseCase.execute(file);
+
+        return response.send();
+    }
+}
+
+export { UploadSpendingCategoriesController };
