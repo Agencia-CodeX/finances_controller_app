@@ -6,14 +6,14 @@ import { CreateUserSpendingCategoryUseCase } from "./CreateUserSpendingCategoryU
 class CreateUserSpendingCategoryController {
     async handle(request: Request, response: Response) {
         const { id } = request.user;
-        const { category_id } = request.body;
+        const { usersCategories } = request.body;
 
         const createUserSpendingCategoryUseCase = container.resolve(
             CreateUserSpendingCategoryUseCase
         );
 
         await createUserSpendingCategoryUseCase.execute({
-            FK_SpendingCategory_IdCategory: category_id,
+            usersCategories,
             FK_User_IdUser: id,
         });
 

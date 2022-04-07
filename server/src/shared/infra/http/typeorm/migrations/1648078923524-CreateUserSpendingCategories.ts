@@ -21,6 +21,11 @@ export class CreateUserSpendingCategories1648078923524
                         name: "FK_User_IdUser",
                         type: "uuid",
                     },
+                    {
+                        name: "Created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
                 foreignKeys: [
                     {

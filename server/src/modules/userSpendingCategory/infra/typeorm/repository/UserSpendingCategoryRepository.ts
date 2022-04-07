@@ -25,6 +25,16 @@ class UserSpendingCategoryRepository
 
         return userSpendingCategory;
     }
+
+    async findById(
+        FK_SpendingCategory_IdCategory: string
+    ): Promise<UserSpendingCategory> {
+        const userCategory = await this.repository.findOne({
+            FK_SpendingCategory_IdCategory,
+        });
+
+        return userCategory;
+    }
 }
 
 export { UserSpendingCategoryRepository };

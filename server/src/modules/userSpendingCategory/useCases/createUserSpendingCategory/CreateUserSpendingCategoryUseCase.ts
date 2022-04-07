@@ -1,10 +1,11 @@
 import { inject, injectable } from "tsyringe";
 
-import { UserSpendingCategory } from "../../infra/typeorm/entities/UserSpendingCategory";
 import { IUserSpendingCategoryRepository } from "../../repository/IUserSpendingCategoryRepository";
 
 interface IRequest {
-    FK_SpendingCategory_IdCategory: string;
+    usersCategories: {
+        FK_SpendingCategory_IdCategory: string;
+    }[];
     FK_User_IdUser: string;
 }
 
@@ -15,18 +16,22 @@ class CreateUserSpendingCategoryUseCase {
         private userSpendingCategoryRepository: IUserSpendingCategoryRepository
     ) {}
 
-    async execute({
-        FK_SpendingCategory_IdCategory,
-        FK_User_IdUser,
-    }: IRequest): Promise<UserSpendingCategory> {
-        const userSpendingCategory =
-            await this.userSpendingCategoryRepository.create({
-                FK_SpendingCategory_IdCategory,
-                FK_User_IdUser,
-            });
+    async execute({ usersCategories, FK_User_IdUser }: IRequest) {
+        usersCategories.map(async (userCategory) => {
+            const { FK_SpendingCategory_IdCategory } = userCategory;
 
-        return userSpendingCategory;
+            const existUserCategory =
+                await this.userSpendingCategoryRepository.findById(
+                    FK_SpendingCategory_IdCategory
+                );
+
+            if (!existUserCategory) {
+                await this.userSpendingCategoryRepository.create({
+                    FK_SpendingCategory_IdCategory,
+                    FK_User_IdUser,
+                });
+            }
+        });
     }
 }
-
 export { CreateUserSpendingCategoryUseCase };

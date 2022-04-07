@@ -3,6 +3,9 @@ import { UserSpendingCategory } from "../infra/typeorm/entities/UserSpendingCate
 
 interface IUserSpendingCategoryRepository {
     create(data: ICreateUserSpendingCategoryDTO): Promise<UserSpendingCategory>;
+    findById(
+        FK_SpendingCategory_IdCategory: string
+    ): Promise<UserSpendingCategory>;
 }
 
 export { IUserSpendingCategoryRepository };
