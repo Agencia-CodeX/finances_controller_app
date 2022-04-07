@@ -9,7 +9,7 @@
 //         private spendingCategoryRepository: ISpendingCategoryRepository
 //     ) {}
 
-//     async execute() {}
+//     async execute(file: any) {}
 // }
 
 // export { UploadSpendingCategoriesUseCase };
