@@ -36,7 +36,6 @@ export class CreateUser1648078871641 implements MigrationInterface {
                     {
                         name: "IsVip",
                         type: "boolean",
-                        default: false,
                     },
                     {
                         name: "VipExpiresDate",

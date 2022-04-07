@@ -11,12 +11,12 @@ interface IRequest {
 }
 
 interface IResponse {
+    token: string;
     user: {
         Name: string;
         Email: string;
         IsVip: boolean;
     };
-    token: string;
 }
 
 @injectable()

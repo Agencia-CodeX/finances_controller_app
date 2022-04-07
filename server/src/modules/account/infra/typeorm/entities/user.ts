@@ -33,6 +33,7 @@ class Users {
     constructor() {
         if (!this.IdUsers) {
             this.IdUsers = uuidV4();
+            this.IsVip = false;
         }
     }
 }
