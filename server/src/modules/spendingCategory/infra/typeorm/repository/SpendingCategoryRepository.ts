@@ -48,6 +48,14 @@ class SpendingCategoryRepository implements ISpendingCategoryRepository {
 
         return categorires;
     }
+
+    async findByName(Name: string): Promise<SpendindCategory> {
+        const category = await this.repository.findOne({
+            Name,
+        });
+
+        return category;
+    }
 }
 
 export { SpendingCategoryRepository };
