@@ -1,42 +1,42 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUserSpendingCategories1648078923524
-    implements MigrationInterface
-{
+export class CreateUserToken1649723261184 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Users Spending Categories",
+                name: "User_token",
                 columns: [
                     {
-                        name: "UserSpendingCategoryId",
+                        name: "TokenId",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "FK_SpendingCategory_IdCategory",
-                        type: "uuid",
-                        isPrimary: true,
+                        name: "Refresh_token",
+                        type: "varchar",
                     },
                     {
                         name: "FK_User_IdUser",
                         type: "uuid",
                     },
+                    {
+                        name: "Expires_date",
+                        type: "timestamp",
+                    },
+                    {
+                        name: "Created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_SpendingCategory_USP",
-                        referencedTableName: "Spending Categories",
-                        referencedColumnNames: ["IdCategory"],
-                        columnNames: ["FK_SpendingCategory_IdCategory"],
-                        onDelete: "CASCADE",
-                    },
-                    {
-                        name: "FK_User_USP",
+                        name: "FKUserToken",
                         referencedTableName: "Users",
                         referencedColumnNames: ["IdUsers"],
                         columnNames: ["FK_User_IdUser"],
                         onDelete: "CASCADE",
+                        onUpdate: "CASCADE",
                     },
                 ],
             })
@@ -44,6 +44,6 @@ export class CreateUserSpendingCategories1648078923524
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("Users Spending Categories");
+        await queryRunner.dropTable("User_token");
     }
 }

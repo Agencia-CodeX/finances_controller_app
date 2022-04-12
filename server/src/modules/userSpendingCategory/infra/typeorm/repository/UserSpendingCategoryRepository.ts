@@ -64,6 +64,17 @@ class UserSpendingCategoryRepository
 
         return userSpendingCategories;
     }
+
+    async findByUserIdAndDelete(user_id: string): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .delete()
+            .from(UserSpendingCategory)
+            .where('"FK_User_IdUser" = :id', {
+                id: user_id,
+            })
+            .execute();
+    }
 }
 
 export { UserSpendingCategoryRepository };

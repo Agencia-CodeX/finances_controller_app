@@ -17,6 +17,10 @@ class CreateUserSpendingCategoryUseCase {
     ) {}
 
     async execute({ usersCategories, FK_User_IdUser }: IRequest) {
+        await this.userSpendingCategoryRepository.findByUserIdAndDelete(
+            FK_User_IdUser
+        );
+
         usersCategories.map(async (userCategory) => {
             const { FK_SpendingCategory_IdCategory } = userCategory;
 

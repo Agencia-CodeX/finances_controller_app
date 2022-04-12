@@ -11,6 +11,7 @@ interface IUserSpendingCategoryRepository {
         initialDate: Date,
         endDate: Date
     ): Promise<UserSpendingCategory[]>;
+    findByUserIdAndDelete(user_id: string): Promise<void>;
 }
 
 export { IUserSpendingCategoryRepository };

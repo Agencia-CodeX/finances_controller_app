@@ -6,14 +6,11 @@ class UserSpendingCategory {
     @PrimaryColumn()
     UserSpendingCategoryId: string;
 
-    @Column()
+    @PrimaryColumn()
     FK_SpendingCategory_IdCategory: string;
 
     @Column()
     FK_User_IdUser: string;
-
-    @CreateDateColumn()
-    Created_at: Date;
 
     constructor() {
         if (!this.UserSpendingCategoryId) {

@@ -1,7 +1,11 @@
 import { container } from "tsyringe";
 
+import "./providers";
+
 import { UsersRepository } from "../../modules/account/infra/typeorm/repository/UsersRepository";
+import { UserTokenRepository } from "../../modules/account/infra/typeorm/repository/UserTokenRepository";
 import { IUsersRepository } from "../../modules/account/repository/IUsersRepository";
+import { IUserTokenRepository } from "../../modules/account/repository/IUserTokenRepository";
 import { BudgetRepository } from "../../modules/budget/infra/typeorm/repository/BudgetRepository";
 import { IBudgetRepository } from "../../modules/budget/repository/IBudgetRepository";
 import { SpendingCategoryRepository } from "../../modules/spendingCategory/infra/typeorm/repository/SpendingCategoryRepository";
@@ -27,4 +31,9 @@ container.registerSingleton<ISpendingCategoryRepository>(
 container.registerSingleton<IUserSpendingCategoryRepository>(
     "UserSpendingCategoryRepository",
     UserSpendingCategoryRepository
+);
+
+container.registerSingleton<IUserTokenRepository>(
+    "UserTokenRepository",
+    UserTokenRepository
 );
