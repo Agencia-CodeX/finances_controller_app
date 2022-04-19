@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../shared/errors/App.Error";
-import { Users } from "../../infra/typeorm/entities/user";
+import { User } from "../../infra/typeorm/entities/user";
 import { IUsersRepository } from "../../repository/IUsersRepository";
 
 interface IRequest {
-    IdUsers: string;
+    id_user: string;
     period: string;
 }
 
@@ -16,9 +16,9 @@ class UserIsVipUseCase {
         private usersRepository: IUsersRepository
     ) {}
 
-    async execute({ IdUsers, period }: IRequest): Promise<Users> {
+    async execute({ id_user, period }: IRequest): Promise<User> {
         const user = await this.usersRepository.findByIdAndUpdate(
-            IdUsers,
+            id_user,
             period
         );
 

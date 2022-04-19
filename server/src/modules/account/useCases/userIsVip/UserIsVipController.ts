@@ -11,7 +11,7 @@ class UserIsVipController {
         const userIsVipUseCase = container.resolve(UserIsVipUseCase);
 
         await userIsVipUseCase.execute({
-            IdUsers: id,
+            id_user: id,
             period,
         });
 

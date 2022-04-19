@@ -11,19 +11,35 @@ class UserTokenRepository implements IUserTokenRepository {
     }
 
     async create({
-        FK_User_IdUser,
-        Expires_date,
-        Refresh_token,
+        expires_date,
+        fk_user_id_user,
+        refresh_token,
     }: ICreateUserTokenDTO): Promise<UserTokens> {
         const userToken = this.repository.create({
-            Expires_date,
-            FK_User_IdUser,
-            Refresh_token,
+            expires_date,
+            fk_user_id_user,
+            refresh_token,
         });
 
         await this.repository.save(userToken);
 
         return userToken;
+    }
+
+    async findByUserIdAndRefreshToken(
+        fk_user_id_user: string,
+        refresh_token: string
+    ): Promise<UserTokens> {
+        const usersTokens = await this.repository.findOne({
+            fk_user_id_user,
+            refresh_token,
+        });
+
+        return usersTokens;
+    }
+
+    async deleteById(id: string): Promise<void> {
+        await this.repository.delete(id);
     }
 }
 

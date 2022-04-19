@@ -1,32 +1,32 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-import { Users } from "./user";
+import { User } from "./user";
 
-@Entity("User_token")
+@Entity("users_token")
 class UserTokens {
     @PrimaryColumn()
-    TokenId: string;
+    id_token: string;
 
     @Column()
-    Refresh_token: string;
+    refresh_token: string;
 
     @Column()
-    FK_User_IdUser: string;
+    fk_user_id_user: string;
 
-    @ManyToOne(() => Users)
-    @JoinColumn({ name: "FK_User_IdUser" })
-    user: Users;
-
-    @Column()
-    Expires_date: Date;
+    @ManyToOne(() => User)
+    @JoinColumn({ name: "fk_user_id_user" })
+    user: User;
 
     @Column()
-    Created_at: Date;
+    expires_date: Date;
+
+    @Column()
+    created_at: Date;
 
     constructor() {
-        if (!this.TokenId) {
-            this.TokenId = uuidv4();
+        if (!this.id_token) {
+            this.id_token = uuidv4();
         }
     }
 }

@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { Budget } from "../../infra/typeorm/entities/budget";
+import { budget } from "../../infra/typeorm/entities/budget";
 import { IBudgetRepository } from "../../repository/IBudgetRepository";
 
 @injectable()
@@ -10,8 +10,8 @@ class ListBudgetsByUserUseCase {
         private budgetRepository: IBudgetRepository
     ) {}
 
-    async execute(IdUsers: string): Promise<Budget[]> {
-        const budgets = await this.budgetRepository.findByUserId(IdUsers);
+    async execute(id_user: string): Promise<budget[]> {
+        const budgets = await this.budgetRepository.findByUserId(id_user);
 
         return budgets;
     }

@@ -6,27 +6,27 @@ export class CreateSpendingCategories1648078896323
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Spending Categories",
+                name: "spending_categories",
                 columns: [
                     {
-                        name: "IdCategory",
+                        name: "id_category",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "Name",
+                        name: "name",
                         type: "varchar",
                     },
                     {
-                        name: "Icon",
+                        name: "icon",
                         type: "varchar",
                     },
                     {
-                        name: "Description",
+                        name: "description",
                         type: "varchar",
                     },
                     {
-                        name: "Created_at",
+                        name: "created_at",
                         type: "timestamp",
                         default: "now()",
                     },
@@ -36,6 +36,6 @@ export class CreateSpendingCategories1648078896323
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.dropTable("Spending Categories");
+        queryRunner.dropTable("spending_categories");
     }
 }

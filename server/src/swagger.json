@@ -11,7 +11,7 @@
     "paths": {
         "/users": {
             "post": {
-                "tags": ["Users"],
+                "tags": ["User"],
                 "summary": "Create a user",
                 "description": "Create a new user",
                 "requestBody": {
@@ -20,20 +20,20 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                "Name": {
+                                "name": {
                                     "type": "string"
                                 },
-                                "Email": {
+                                "email": {
                                     "type": "string"
                                 },
-                                "Password": {
+                                "password": {
                                     "type": "string"
                                 }
                             },
                             "example": {
-                                "Name": "Users name sample",
-                                "Email": "Users email sample",
-                                "Password": "Users Password sample"
+                                "name": "User name sample",
+                                "email": "User email sample",
+                                "password": "User password sample"
                             }
                             }
 
@@ -58,10 +58,10 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "Email": {
+                                    "email": {
                                         "type": "string"
                                     },
-                                    "Password": {
+                                    "password": {
                                         "type": "string"
                                     } 
                                 }
@@ -74,7 +74,7 @@
                         "descritpion": "Sucess"
                     },
                     "400": {
-                        "description": "Email or password incorrect"
+                        "description": "email or password incorrect"
                     }
                 }
             }

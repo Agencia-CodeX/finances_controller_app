@@ -1,20 +1,20 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryColumn, Column } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-@Entity("Users Spending Categories")
+@Entity("users_spending_categories")
 class UserSpendingCategory {
     @PrimaryColumn()
-    UserSpendingCategoryId: string;
+    id_user_spending_category: string;
 
     @PrimaryColumn()
-    FK_SpendingCategory_IdCategory: string;
+    fk_spending_category_id_category: string;
 
-    @Column()
-    FK_User_IdUser: string;
+    @PrimaryColumn()
+    fk_user_id_user: string;
 
     constructor() {
-        if (!this.UserSpendingCategoryId) {
-            this.UserSpendingCategoryId = uuidv4();
+        if (!this.id_user_spending_category) {
+            this.id_user_spending_category = uuidv4();
         }
     }
 }

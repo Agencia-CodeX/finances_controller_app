@@ -9,18 +9,18 @@ import { IUsersRepository } from "../../repository/IUsersRepository";
 import { IUserTokenRepository } from "../../repository/IUserTokenRepository";
 
 interface IRequest {
-    Email: string;
-    Password: string;
+    email: string;
+    password: string;
 }
 
 interface IResponse {
     user: {
-        Name: string;
-        Email: string;
-        IsVip: boolean;
+        name: string;
+        email: string;
+        is_vip: boolean;
     };
     token: string;
-    Refresh_token: string;
+    refresh_token: string;
 }
 
 @injectable()
@@ -34,8 +34,8 @@ class AuthenticateUserUseCase {
         private dateProvider: IDateProvider
     ) {}
 
-    async execute({ Email, Password }: IRequest): Promise<IResponse> {
-        const user = await this.usersRepository.findByEmail(Email);
+    async execute({ email, password }: IRequest): Promise<IResponse> {
+        const user = await this.usersRepository.findByEmail(email);
         const {
             expires_in_refresh_token,
             expires_in_token,
@@ -44,22 +44,22 @@ class AuthenticateUserUseCase {
             secrete_refresh_token,
         } = auth;
         if (!user) {
-            throw new AppError("Email or password incorrect!");
+            throw new AppError("email or password incorrect!");
         }
 
-        const passwordMatch = await compare(Password, user.Password);
+        const passwordMatch = await compare(password, user.password);
 
         if (!passwordMatch) {
-            throw new AppError("Email or password incorrect!");
+            throw new AppError("email or password incorrect!");
         }
 
         const token = sign({}, secret_token, {
-            subject: user.IdUsers,
+            subject: user.id_user,
             expiresIn: expires_in_token,
         });
 
-        const Refresh_token = sign({ Email }, secrete_refresh_token, {
-            subject: user.IdUsers,
+        const refresh_token = sign({ email }, secrete_refresh_token, {
+            subject: user.id_user,
             expiresIn: expires_in_refresh_token,
         });
 
@@ -68,19 +68,19 @@ class AuthenticateUserUseCase {
         );
 
         await this.userTokenRepository.create({
-            FK_User_IdUser: user.IdUsers,
-            Refresh_token,
-            Expires_date: refresh_token_expires_date,
+            fk_user_id_user: user.id_user,
+            refresh_token,
+            expires_date: refresh_token_expires_date,
         });
 
         const tokenReturn: IResponse = {
             token,
             user: {
-                Name: user.Name,
-                Email: user.Email,
-                IsVip: user.IsVip,
+                name: user.name,
+                email: user.email,
+                is_vip: user.is_vip,
             },
-            Refresh_token,
+            refresh_token,
         };
 
         return tokenReturn;

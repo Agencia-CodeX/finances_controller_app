@@ -1,26 +1,26 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-@Entity("Spending Categories")
+@Entity("spending_categories")
 class SpendindCategory {
     @PrimaryColumn()
-    IdCategory: string;
+    id_category: string;
 
     @Column()
-    Name: string;
+    name: string;
 
     @Column()
-    Icon: string;
+    icon: string;
 
     @Column()
-    Description: string;
+    description: string;
 
     @CreateDateColumn()
-    Created_at: Date;
+    created_at: Date;
 
     constructor() {
-        if (!this.IdCategory) {
-            this.IdCategory = uuidv4();
+        if (!this.id_category) {
+            this.id_category = uuidv4();
         }
     }
 }

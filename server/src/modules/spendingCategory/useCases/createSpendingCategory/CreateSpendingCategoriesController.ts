@@ -5,16 +5,16 @@ import { CreateSpendingCategoriesUseCase } from "./CreateSpendingCategoriesUseCa
 
 class CreateSpendingCategoriesController {
     async handle(request: Request, response: Response) {
-        const { Description, Icon, Name } = request.body;
+        const { description, icon, name } = request.body;
 
         const createSpendingCategoriesUseCase = container.resolve(
             CreateSpendingCategoriesUseCase
         );
 
         await createSpendingCategoriesUseCase.execute({
-            Description,
-            Icon,
-            Name,
+            description,
+            icon,
+            name,
         });
 
         return response.status(201).send();

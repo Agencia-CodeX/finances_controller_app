@@ -5,18 +5,18 @@ import { CreateBudgetUseCase } from "./CreateBudgetUseCase";
 
 class CreateBudgetController {
     async handle(request: Request, response: Response) {
-        const { Budget, Period } = request.body;
+        const { budget, period } = request.body;
         const { id } = request.user;
 
         const createBudgetUseCase = container.resolve(CreateBudgetUseCase);
 
-        const budget = await createBudgetUseCase.execute({
-            Budget,
-            Period,
-            FK_User_IdUser: id,
+        const budgetResponse = await createBudgetUseCase.execute({
+            budget,
+            period,
+            fk_user_id_user: id,
         });
 
-        return response.status(201).json(budget);
+        return response.status(201).json(budgetResponse);
     }
 }
 

@@ -4,47 +4,48 @@ export class CreateBudget1648079017205 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Budget",
+                name: "budget",
                 columns: [
                     {
-                        name: "IdBudget",
+                        name: "id_budget",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "Budget",
+                        name: "budget",
                         type: "numeric",
                     },
                     {
-                        name: "Period",
+                        name: "period",
                         type: "varchar",
                     },
                     {
-                        name: "Created_at",
+                        name: "created_at",
                         type: "timestamp",
                         default: "now()",
                     },
                     {
-                        name: "IsActive",
+                        name: "is_active",
                         type: "boolean",
                         default: true,
+                        isNullable: true,
                     },
                     {
-                        name: "FinalDate",
+                        name: "final_date",
                         type: "timestamp",
                         isNullable: true,
                     },
                     {
-                        name: "FK_User_IdUser",
+                        name: "fk_user_id_user",
                         type: "uuid",
                     },
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_User_Budget",
-                        referencedTableName: "Users",
-                        referencedColumnNames: ["IdUsers"],
-                        columnNames: ["FK_User_IdUser"],
+                        name: "fk_user_budget",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id_user"],
+                        columnNames: ["fk_user_id_user"],
                         onDelete: "CASCADE",
                     },
                 ],
@@ -53,6 +54,6 @@ export class CreateBudget1648079017205 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("Budget");
+        await queryRunner.dropTable("budget");
     }
 }

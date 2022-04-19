@@ -19,14 +19,14 @@ class UpdateUserAvatarUseCase {
         const user = await this.usersRepository.findById(user_id);
 
         if (!user) {
-            throw new AppError("Users not found!");
+            throw new AppError("User not found!");
         }
 
-        if (user.Avatar) {
-            await deleteFile(`./tmp/avatar/${user.Avatar}`);
+        if (user.avatar) {
+            await deleteFile(`./tmp/avatar/${user.avatar}`);
         }
 
-        user.Avatar = avatarFile;
+        user.avatar = avatarFile;
 
         await this.usersRepository.create(user);
     }

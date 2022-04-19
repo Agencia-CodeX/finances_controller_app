@@ -13,12 +13,12 @@ class UserSpendingCategoryRepository
     }
 
     async create({
-        FK_SpendingCategory_IdCategory,
-        FK_User_IdUser,
+        fk_user_id_user,
+        fk_spending_category_id_category,
     }: ICreateUserSpendingCategoryDTO): Promise<UserSpendingCategory> {
         const userSpendingCategory = this.repository.create({
-            FK_SpendingCategory_IdCategory,
-            FK_User_IdUser,
+            fk_spending_category_id_category,
+            fk_user_id_user,
         });
 
         await this.repository.save(userSpendingCategory);
@@ -27,10 +27,10 @@ class UserSpendingCategoryRepository
     }
 
     async findById(
-        FK_SpendingCategory_IdCategory: string
+        fk_spending_category_id_category: string
     ): Promise<UserSpendingCategory> {
         const userCategory = await this.repository.findOne({
-            FK_SpendingCategory_IdCategory,
+            fk_spending_category_id_category,
         });
 
         return userCategory;
@@ -43,18 +43,18 @@ class UserSpendingCategoryRepository
     ): Promise<UserSpendingCategory[]> {
         const userSpendingCategoriesQuery = this.repository
             .createQueryBuilder("c")
-            .where('"FK_User_IdUser" = :id', { id: user_id });
+            .where('"fk_user_id_user" = :id', { id: user_id });
 
         if (initialDate) {
             userSpendingCategoriesQuery.andWhere(
-                '"Created_at" > :initialDate',
+                '"created_at" > :initialDate',
                 {
                     initialDate,
                 }
             );
         }
         if (endDate) {
-            userSpendingCategoriesQuery.andWhere('"Created_at" < :endDate', {
+            userSpendingCategoriesQuery.andWhere('"created_at" < :endDate', {
                 endDate,
             });
         }
@@ -70,7 +70,7 @@ class UserSpendingCategoryRepository
             .createQueryBuilder()
             .delete()
             .from(UserSpendingCategory)
-            .where('"FK_User_IdUser" = :id', {
+            .where('"fk_user_id_user" = :id', {
                 id: user_id,
             })
             .execute();

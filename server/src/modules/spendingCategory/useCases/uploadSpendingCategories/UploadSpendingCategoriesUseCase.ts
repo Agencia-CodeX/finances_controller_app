@@ -5,9 +5,9 @@ import { inject, injectable } from "tsyringe";
 import { ISpendingCategoryRepository } from "../../repository/ISpendingCategoryRepository";
 
 interface IUploadSpendingCategoires {
-    Description: string;
-    Icon: string;
-    Name: string;
+    description: string;
+    icon: string;
+    name: string;
 }
 
 @injectable()
@@ -33,11 +33,11 @@ class UploadSpendingCategoriesUseCase {
 
             parseFile
                 .on("data", async (line) => {
-                    const [Name, Description, Icon] = line;
+                    const [name, description, icon] = line;
                     categories.push({
-                        Name,
-                        Description,
-                        Icon,
+                        name,
+                        description,
+                        icon,
                     });
                 })
                 .on("end", () => {
@@ -53,15 +53,15 @@ class UploadSpendingCategoriesUseCase {
     async execute(file: Express.Multer.File) {
         const categories = await this.loadCategories(file);
         categories.map(async (category) => {
-            const { Name, Description, Icon } = category;
+            const { name, description, icon } = category;
             const existCategory =
-                await this.spendingCategoryRepository.findByName(Name);
+                await this.spendingCategoryRepository.findByName(name);
 
             if (!existCategory) {
                 await this.spendingCategoryRepository.create({
-                    Name,
-                    Description,
-                    Icon,
+                    name,
+                    description,
+                    icon,
                 });
             }
         });

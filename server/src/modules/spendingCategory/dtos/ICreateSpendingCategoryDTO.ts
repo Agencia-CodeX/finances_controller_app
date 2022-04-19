@@ -1,7 +1,7 @@
 interface ICreateSpendingCategoryDTO {
-    Name: string;
-    Icon: string;
-    Description: string;
+    name: string;
+    icon: string;
+    description: string;
 }
 
 export { ICreateSpendingCategoryDTO };

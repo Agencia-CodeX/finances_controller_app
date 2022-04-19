@@ -4,46 +4,46 @@ export class CreateUser1648078871641 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Users",
+                name: "users",
                 columns: [
                     {
-                        name: "IdUsers",
+                        name: "id_user",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "Name",
+                        name: "name",
                         type: "varchar",
                     },
                     {
-                        name: "Email",
+                        name: "email",
                         type: "varchar",
                     },
                     {
-                        name: "Password",
+                        name: "password",
                         type: "varchar",
                     },
                     {
-                        name: "Avatar",
+                        name: "avatar",
                         type: "varchar",
                         isNullable: true,
                     },
                     {
-                        name: "IsAdmin",
+                        name: "is_admin",
                         type: "boolean",
                         default: false,
                     },
                     {
-                        name: "IsVip",
+                        name: "is_vip",
                         type: "boolean",
                     },
                     {
-                        name: "VipExpiresDate",
+                        name: "vip_expires_date",
                         type: "timestamp",
                         isNullable: true,
                     },
                     {
-                        name: "Created_at",
+                        name: "created_at",
                         type: "timestamp",
                         default: "now()",
                     },
@@ -53,6 +53,6 @@ export class CreateUser1648078871641 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("Users");
+        await queryRunner.dropTable("users");
     }
 }

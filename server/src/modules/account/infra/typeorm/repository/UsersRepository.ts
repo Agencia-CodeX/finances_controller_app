@@ -4,31 +4,31 @@ import { getRepository, Repository } from "typeorm";
 import { AppError } from "../../../../../shared/errors/App.Error";
 import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../../repository/IUsersRepository";
-import { Users } from "../entities/user";
+import { User } from "../entities/user";
 
 class UsersRepository implements IUsersRepository {
-    private repository: Repository<Users>;
+    private repository: Repository<User>;
     constructor() {
-        this.repository = getRepository(Users);
+        this.repository = getRepository(User);
     }
 
     async create({
-        Email,
-        Name,
-        Password,
-        Avatar,
-        IdUsers,
-        IsVip,
-        VipExpiresDate,
-    }: ICreateUserDTO): Promise<Users> {
+        email,
+        name,
+        password,
+        avatar,
+        id_user,
+        is_vip,
+        vip_expires_date,
+    }: ICreateUserDTO): Promise<User> {
         const user = this.repository.create({
-            Email,
-            Name,
-            Password,
-            Avatar,
-            IdUsers,
-            IsVip,
-            VipExpiresDate,
+            email,
+            name,
+            password,
+            avatar,
+            id_user,
+            is_vip,
+            vip_expires_date,
         });
 
         await this.repository.save(user);
@@ -36,29 +36,29 @@ class UsersRepository implements IUsersRepository {
         return user;
     }
 
-    async findByEmail(Email: string): Promise<Users> {
-        const user = await this.repository.findOne({ Email });
+    async findByEmail(email: string): Promise<User> {
+        const user = await this.repository.findOne({ email });
         return user;
     }
 
-    async findById(IdUsers: string): Promise<Users> {
-        const user = await this.repository.findOne(IdUsers);
+    async findById(id_user: string): Promise<User> {
+        const user = await this.repository.findOne(id_user);
 
         return user;
     }
 
-    async findByIdAndUpdate(IdUsers: string, period: string): Promise<Users> {
-        const user = await this.repository.findOne(IdUsers);
-        user.IsVip = true;
+    async findByIdAndUpdate(id_user: string, period: string): Promise<User> {
+        const user = await this.repository.findOne(id_user);
+        user.is_vip = true;
 
-        if (period === "mounth") {
+        if (period === "month") {
             const dateNow = moment();
             const dateAfter = dateNow.add(1, "month").toDate();
-            user.VipExpiresDate = dateAfter;
+            user.vip_expires_date = dateAfter;
         } else if (period === "year") {
             const dateNow = moment();
             const dateAfter = dateNow.add(1, "year").toDate();
-            user.VipExpiresDate = dateAfter;
+            user.vip_expires_date = dateAfter;
         } else {
             throw new AppError("Invalid date!");
         }

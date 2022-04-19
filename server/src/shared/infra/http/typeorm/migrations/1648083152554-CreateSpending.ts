@@ -4,56 +4,56 @@ export class CreateSpending1648083152554 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Spending",
+                name: "spending",
                 columns: [
                     {
-                        name: "IdSpending",
+                        name: "id_spending",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "Value",
+                        name: "value",
                         type: "numeric",
                     },
                     {
-                        name: "Date",
+                        name: "date",
                         type: "timestamp",
                     },
                     {
-                        name: "FK_User_IdUser",
+                        name: "fk_user_id_user",
                         type: "uuid",
                     },
                     {
-                        name: "FK_SpendingCategory_IdCategory",
+                        name: "fk_spending_category_id_category",
                         type: "uuid",
                     },
                     {
-                        name: "FK_Budget_IdBudget",
+                        name: "fk_budget_id_budget",
                         type: "uuid",
                     },
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_SpendingCategory_Spending",
-                        referencedTableName: "Spending Categories",
-                        referencedColumnNames: ["IdCategory"],
-                        columnNames: ["FK_SpendingCategory_IdCategory"],
+                        name: "fk_spending_category_spending",
+                        referencedTableName: "spending_categories",
+                        referencedColumnNames: ["id_category"],
+                        columnNames: ["fk_spending_category_id_category"],
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL",
                     },
                     {
-                        name: "FK_User_Spending",
-                        referencedTableName: "Users",
-                        referencedColumnNames: ["IdUsers"],
-                        columnNames: ["FK_User_IdUser"],
+                        name: "fk_user_spending",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id_user"],
+                        columnNames: ["fk_user_id_user"],
                         onDelete: "CASCADE",
                         onUpdate: "SET NULL",
                     },
                     {
-                        name: "FK_Budget_Spending",
-                        referencedTableName: "Budget",
-                        referencedColumnNames: ["IdBudget"],
-                        columnNames: ["FK_Budget_IdBudget"],
+                        name: "fk_budget_spending",
+                        referencedTableName: "budget",
+                        referencedColumnNames: ["id_budget"],
+                        columnNames: ["fk_budget_id_budget"],
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL",
                     },
@@ -63,6 +63,6 @@ export class CreateSpending1648083152554 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("Spending");
+        await queryRunner.dropTable("spending");
     }
 }

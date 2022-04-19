@@ -4,37 +4,38 @@ export class CreateUserToken1649723261184 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "User_token",
+                name: "users_token",
                 columns: [
                     {
-                        name: "TokenId",
+                        name: "id_token",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "Refresh_token",
+                        name: "refresh_token",
                         type: "varchar",
+                        isNullable: true,
                     },
                     {
-                        name: "FK_User_IdUser",
+                        name: "fk_user_id_user",
                         type: "uuid",
                     },
                     {
-                        name: "Expires_date",
+                        name: "expires_date",
                         type: "timestamp",
                     },
                     {
-                        name: "Created_at",
+                        name: "created_at",
                         type: "timestamp",
                         default: "now()",
                     },
                 ],
                 foreignKeys: [
                     {
-                        name: "FKUserToken",
-                        referencedTableName: "Users",
-                        referencedColumnNames: ["IdUsers"],
-                        columnNames: ["FK_User_IdUser"],
+                        name: "fk_user_token",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id_user"],
+                        columnNames: ["fk_user_id_user"],
                         onDelete: "CASCADE",
                         onUpdate: "CASCADE",
                     },
@@ -44,6 +45,6 @@ export class CreateUserToken1649723261184 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("User_token");
+        await queryRunner.dropTable("users_token");
     }
 }

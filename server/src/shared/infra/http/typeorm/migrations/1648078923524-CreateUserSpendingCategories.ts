@@ -6,36 +6,37 @@ export class CreateUserSpendingCategories1648078923524
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "Users Spending Categories",
+                name: "users_spending_categories",
                 columns: [
                     {
-                        name: "UserSpendingCategoryId",
+                        name: "id_user_spending_category",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "FK_SpendingCategory_IdCategory",
+                        name: "fk_spending_category_id_category",
                         type: "uuid",
                         isPrimary: true,
                     },
                     {
-                        name: "FK_User_IdUser",
+                        name: "fk_user_id_user",
                         type: "uuid",
+                        isPrimary: true,
                     },
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_SpendingCategory_USP",
-                        referencedTableName: "Spending Categories",
-                        referencedColumnNames: ["IdCategory"],
-                        columnNames: ["FK_SpendingCategory_IdCategory"],
+                        name: "fk_spending_category_usp",
+                        referencedTableName: "spending_categories",
+                        referencedColumnNames: ["id_category"],
+                        columnNames: ["fk_spending_category_id_category"],
                         onDelete: "CASCADE",
                     },
                     {
-                        name: "FK_User_USP",
-                        referencedTableName: "Users",
-                        referencedColumnNames: ["IdUsers"],
-                        columnNames: ["FK_User_IdUser"],
+                        name: "fk_user_usp",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id_user"],
+                        columnNames: ["fk_user_id_user"],
                         onDelete: "CASCADE",
                     },
                 ],
@@ -44,6 +45,6 @@ export class CreateUserSpendingCategories1648078923524
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("Users Spending Categories");
+        await queryRunner.dropTable("users_spending_categories");
     }
 }

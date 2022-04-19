@@ -1,38 +1,38 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-import { Users } from "../../../../account/infra/typeorm/entities/user";
+import { User } from "../../../../account/infra/typeorm/entities/user";
 
-@Entity("Budget")
+@Entity("budget")
 class Budget {
     @PrimaryColumn()
-    IdBudget: string;
+    id_budget: string;
 
-    @ManyToOne(() => Users)
-    @JoinColumn({ name: "FK_User_IdUser" })
-    user: Users;
-
-    @Column()
-    FK_User_IdUser: string;
+    @ManyToOne(() => User)
+    @JoinColumn({ name: "fk_user_id_user" })
+    user: User;
 
     @Column()
-    Budget: number;
+    fk_user_id_user: string;
 
     @Column()
-    Period: string;
+    budget: number;
 
     @Column()
-    Created_at: Date;
+    period: string;
 
     @Column()
-    IsActive: boolean;
+    created_at: Date;
 
     @Column()
-    FinalDate: Date;
+    is_active: boolean;
+
+    @Column()
+    final_date: Date;
 
     constructor() {
-        if (!this.IdBudget) {
-            this.IdBudget = uuidv4();
+        if (!this.id_budget) {
+            this.id_budget = uuidv4();
         }
     }
 }

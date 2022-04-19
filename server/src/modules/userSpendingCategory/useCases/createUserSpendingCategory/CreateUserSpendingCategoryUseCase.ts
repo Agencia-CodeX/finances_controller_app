@@ -4,9 +4,9 @@ import { IUserSpendingCategoryRepository } from "../../repository/IUserSpendingC
 
 interface IRequest {
     usersCategories: {
-        FK_SpendingCategory_IdCategory: string;
+        fk_spending_category_id_category: string;
     }[];
-    FK_User_IdUser: string;
+    fk_user_id_user: string;
 }
 
 @injectable()
@@ -16,23 +16,23 @@ class CreateUserSpendingCategoryUseCase {
         private userSpendingCategoryRepository: IUserSpendingCategoryRepository
     ) {}
 
-    async execute({ usersCategories, FK_User_IdUser }: IRequest) {
+    async execute({ usersCategories, fk_user_id_user }: IRequest) {
         await this.userSpendingCategoryRepository.findByUserIdAndDelete(
-            FK_User_IdUser
+            fk_user_id_user
         );
 
         usersCategories.map(async (userCategory) => {
-            const { FK_SpendingCategory_IdCategory } = userCategory;
+            const { fk_spending_category_id_category } = userCategory;
 
             const existUserCategory =
                 await this.userSpendingCategoryRepository.findById(
-                    FK_SpendingCategory_IdCategory
+                    fk_spending_category_id_category
                 );
 
             if (!existUserCategory) {
                 await this.userSpendingCategoryRepository.create({
-                    FK_SpendingCategory_IdCategory,
-                    FK_User_IdUser,
+                    fk_spending_category_id_category,
+                    fk_user_id_user,
                 });
             }
         });

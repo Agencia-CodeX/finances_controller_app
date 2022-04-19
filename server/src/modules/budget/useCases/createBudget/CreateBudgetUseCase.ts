@@ -3,9 +3,9 @@ import { inject, injectable } from "tsyringe";
 import { IBudgetRepository } from "../../repository/IBudgetRepository";
 
 interface IRequest {
-    Budget: number;
-    Period: string;
-    FK_User_IdUser: string;
+    budget: number;
+    period: string;
+    fk_user_id_user: string;
 }
 
 @injectable()
@@ -15,12 +15,16 @@ class CreateBudgetUseCase {
         private budgetRepository: IBudgetRepository
     ) {}
 
-    async execute({ Budget, Period, FK_User_IdUser }: IRequest): Promise<void> {
+    async execute({
+        budget,
+        period,
+        fk_user_id_user,
+    }: IRequest): Promise<void> {
         await this.budgetRepository.findAndUpdateFalse(false);
         await this.budgetRepository.create({
-            Budget,
-            Period,
-            FK_User_IdUser,
+            budget,
+            period,
+            fk_user_id_user,
         });
     }
 }

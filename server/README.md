@@ -40,7 +40,7 @@
 
 - Não deve ser possível efetuar a recuperação de senha para emails não existentes.
 
-# Cadastro de Budget
+# Cadastro de budget
 
 ## Requisito Funcional
 
@@ -48,9 +48,9 @@
 
 ## Regras de negócio 
 
-- Sempre que um novo budget de um usuário for criado deve-se preencher o campo IsActive para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false" e sua data fim para a data atual.
+- Sempre que um novo budget de um usuário for criado deve-se preencher o campo is_active para "true" e verificar se existe algum budget do mesmo usuário com o valor "true", caso encontre, deve-se altera-lo para "false" e sua data fim para a data atual.
 
-# Listagem de Budget
+# Listagem de budget
 
 ## Requisito Funcional
 
@@ -58,7 +58,7 @@
 
 ## Regras de negócio 
 
-- No budget em que IsActive possui o valor "true" deve se adicionar a data atual como valor do campo data final.
+- No budget em que is_active possui o valor "true" deve se adicionar a data atual como valor do campo data final.
 ################################################################################
 # Cadastro de Spending Categories
 
@@ -80,25 +80,25 @@
 
 - Deve ser possível listar todas as Spending Categories cadastradas.
 
-- Deve ser possível remover uma ou várias Users Spending Categories do usuário.
+- Deve ser possível remover uma ou várias User Spending Categories do usuário.
 #################################################################################
-# Cadastro e Remoção de Users Spending Categories
+# Cadastro e Remoção de User Spending Categories
 
 ## Requisito Funcional
 
-- Deve ser possível criar uma ou várias Users Spending Category para o usuário.
+- Deve ser possível criar uma ou várias User Spending Category para o usuário.
 
-- Deve ser possível deletar uma ou várias Users Spending Category do usuário.
+- Deve ser possível deletar uma ou várias User Spending Category do usuário.
 
 ## Regras de negócio
 
-- A rota irá receber um json com uma lista de todas as Users Spending Categories desejadas, deve se após o recebimento comparar as categorias ja cadastradas com as solicitadas pelo json, [x] As categorias presentes nos 2 não vem sofrer nenhuma alteração, [x] As categorias presentes no json mas ainda não cadastradas devem ser adicionadas, [x] As categorias Cadastradas que não estão presentes no json deve ser deletadas.
+- A rota irá receber um json com uma lista de todas as User Spending Categories desejadas, deve se após o recebimento comparar as categorias ja cadastradas com as solicitadas pelo json, [x] As categorias presentes nos 2 não vem sofrer nenhuma alteração, [x] As categorias presentes no json mas ainda não cadastradas devem ser adicionadas, [x] As categorias Cadastradas que não estão presentes no json deve ser deletadas.
 
-# Listagem de Users Spending Categories
+# Listagem de User Spending Categories
 
 ## Requisito Funcional
 
-- Deve ser possível listar todas as Users Spending Categories do usuário.
+- Deve ser possível listar todas as User Spending Categories do usuário.
 
 
 

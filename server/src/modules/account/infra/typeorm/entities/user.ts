@@ -1,41 +1,41 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("Users")
-class Users {
+@Entity("users")
+class User {
     @PrimaryColumn()
-    IdUsers: string;
+    id_user: string;
 
     @Column()
-    Name: string;
+    name: string;
 
     @Column()
-    Email: string;
+    email: string;
 
     @Column()
-    Password: string;
+    password: string;
 
     @Column()
-    Avatar: string;
+    avatar: string;
 
     @Column()
-    IsAdmin: boolean;
+    is_admin: boolean;
 
     @Column()
-    IsVip: boolean;
+    is_vip: boolean;
 
     @Column()
-    VipExpiresDate: Date;
+    vip_expires_date: Date;
 
     @CreateDateColumn()
-    Created_at: Date;
+    created_at: Date;
 
     constructor() {
-        if (!this.IdUsers) {
-            this.IdUsers = uuidV4();
-            this.IsVip = false;
+        if (!this.id_user) {
+            this.id_user = uuidV4();
+            this.is_vip = false;
         }
     }
 }
 
-export { Users };
+export { User };

@@ -1,7 +1,7 @@
 interface ICreateUserTokenDTO {
-    FK_User_IdUser: string;
-    Expires_date: Date;
-    Refresh_token: string;
+    fk_user_id_user: string;
+    expires_date: Date;
+    refresh_token: string;
 }
 
 export { ICreateUserTokenDTO };

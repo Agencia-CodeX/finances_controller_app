@@ -3,9 +3,9 @@ import { inject, injectable } from "tsyringe";
 import { ISpendingCategoryRepository } from "../../repository/ISpendingCategoryRepository";
 
 interface IRequest {
-    Name: string;
-    Icon: string;
-    Description: string;
+    name: string;
+    icon: string;
+    description: string;
 }
 
 @injectable()
@@ -15,11 +15,11 @@ class CreateSpendingCategoriesUseCase {
         private spendingCategoryRepository: ISpendingCategoryRepository
     ) {}
 
-    async execute({ Description, Icon, Name }: IRequest) {
+    async execute({ description, icon, name }: IRequest) {
         await this.spendingCategoryRepository.create({
-            Name,
-            Icon,
-            Description,
+            name,
+            icon,
+            description,
         });
     }
 }

@@ -14,7 +14,7 @@ class CreateUserSpendingCategoryController {
 
         await createUserSpendingCategoryUseCase.execute({
             usersCategories,
-            FK_User_IdUser: id,
+            fk_user_id_user: id,
         });
 
         return response.send();

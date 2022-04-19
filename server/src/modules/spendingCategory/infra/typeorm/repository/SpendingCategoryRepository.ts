@@ -18,12 +18,12 @@ class SpendingCategoryRepository implements ISpendingCategoryRepository {
         const spendingCategoriesQuery = this.repository.createQueryBuilder("c");
 
         if (initialDate) {
-            spendingCategoriesQuery.andWhere('"Created_at" > :initialDate', {
+            spendingCategoriesQuery.andWhere('"created_at" > :initialDate', {
                 initialDate,
             });
         }
         if (endDate) {
-            spendingCategoriesQuery.andWhere('"Created_at" < :endDate', {
+            spendingCategoriesQuery.andWhere('"created_at" < :endDate', {
                 endDate,
             });
         }
@@ -34,14 +34,14 @@ class SpendingCategoryRepository implements ISpendingCategoryRepository {
     }
 
     async create({
-        Description,
-        Icon,
-        Name,
+        description,
+        icon,
+        name,
     }: ICreateSpendingCategoryDTO): Promise<SpendindCategory> {
         const categorires = this.repository.create({
-            Description,
-            Icon,
-            Name,
+            description,
+            icon,
+            name,
         });
 
         await this.repository.save(categorires);
@@ -49,9 +49,9 @@ class SpendingCategoryRepository implements ISpendingCategoryRepository {
         return categorires;
     }
 
-    async findByName(Name: string): Promise<SpendindCategory> {
+    async findByName(name: string): Promise<SpendindCategory> {
         const category = await this.repository.findOne({
-            Name,
+            name,
         });
 
         return category;

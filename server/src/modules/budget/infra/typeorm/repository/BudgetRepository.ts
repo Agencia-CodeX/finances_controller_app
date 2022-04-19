@@ -12,44 +12,44 @@ class BudgetRepository implements IBudgetRepository {
     }
 
     async create({
-        Budget,
-        Period,
-        FK_User_IdUser,
+        budget,
+        period,
+        fk_user_id_user,
     }: ICreateBudgetDTO): Promise<Budget> {
-        const budget = this.repository.create({
-            Budget,
-            Period,
-            FK_User_IdUser,
+        const value = this.repository.create({
+            budget,
+            period,
+            fk_user_id_user,
         });
 
-        await this.repository.save(budget);
+        await this.repository.save(value);
 
-        return budget;
+        return value;
     }
 
-    async findAndUpdateTrue(IsActive: boolean): Promise<void> {
+    async findAndUpdateTrue(is_active: boolean): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ IsActive })
-            .where("IsActive = true")
-            .setParameters({ IsActive })
+            .set({ is_active })
+            .where("is_active = true")
+            .setParameters({ is_active })
             .execute();
     }
 
-    async findAndUpdateFalse(IsActive: boolean): Promise<void> {
+    async findAndUpdateFalse(is_active: boolean): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ IsActive })
-            .where("IsActive = true")
-            .setParameters({ IsActive })
+            .set({ is_active })
+            .where("is_active = true")
+            .setParameters({ is_active })
             .execute();
     }
 
-    async findByUserId(FK_User_IdUser: string): Promise<Budget[]> {
+    async findByUserId(fk_user_id_user: string): Promise<Budget[]> {
         const budgets = await this.repository.find({
-            where: { FK_User_IdUser },
+            where: { fk_user_id_user },
             relations: ["user"],
         });
 
