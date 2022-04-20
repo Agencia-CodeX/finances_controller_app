@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 @Entity("users_spending_categories")
