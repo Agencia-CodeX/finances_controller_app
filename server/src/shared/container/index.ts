@@ -8,6 +8,8 @@ import { IUsersRepository } from "../../modules/account/repository/IUsersReposit
 import { IUserTokenRepository } from "../../modules/account/repository/IUserTokenRepository";
 import { BudgetRepository } from "../../modules/budget/infra/typeorm/repository/BudgetRepository";
 import { IBudgetRepository } from "../../modules/budget/repository/IBudgetRepository";
+import { SpendingRepository } from "../../modules/spending/infra/repository/SpendingRepository";
+import { ISpendingRepository } from "../../modules/spending/repository/ISpendingRepository";
 import { SpendingCategoryRepository } from "../../modules/spendingCategory/infra/typeorm/repository/SpendingCategoryRepository";
 import { ISpendingCategoryRepository } from "../../modules/spendingCategory/repository/ISpendingCategoryRepository";
 import { UserSpendingCategoryRepository } from "../../modules/userSpendingCategory/infra/typeorm/repository/UserSpendingCategoryRepository";
@@ -36,4 +38,9 @@ container.registerSingleton<IUserSpendingCategoryRepository>(
 container.registerSingleton<IUserTokenRepository>(
     "UserTokenRepository",
     UserTokenRepository
+);
+
+container.registerSingleton<ISpendingRepository>(
+    "SpendingRepository",
+    SpendingRepository
 );
