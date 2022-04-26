@@ -27,12 +27,10 @@ class UserTokenRepository implements IUserTokenRepository {
     }
 
     async findByUserIdAndRefreshToken(
-        fk_user_id_user: string,
-        refresh_token: string
+        fk_user_id_user: string
     ): Promise<UserTokens> {
         const usersTokens = await this.repository.findOne({
             fk_user_id_user,
-            refresh_token,
         });
 
         return usersTokens;

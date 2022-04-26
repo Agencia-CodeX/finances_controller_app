@@ -1,8 +1,8 @@
 Arguments: 
-  F:\nodejs\node.exe C:\User\pedro\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add dayjs
+  F:\nodejs\node.exe C:\Users\pedro\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add jwt-decode
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\dotnet\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;F:\Java\jdk1.8.0_321\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\User\pedro\.cargo\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\nodejs\;C:\Program Files\Git\cmd;C:\User\pedro\AppData\Local\Microsoft\WindowsApps;C:\User\pedro\AppData\Local\Programs\Microsoft VS Code\bin;C:\User\pedro\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python310\Scripts;;F:\PyCharm Community Edition 2021.3.1\bin;;C:\User\pedro\.dotnet\tools
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\dotnet\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;F:\Java\jdk1.8.0_321\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\pedro\.cargo\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\nodejs\;C:\Program Files\Git\cmd;C:\Users\pedro\AppData\Local\Microsoft\WindowsApps;C:\Users\pedro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\pedro\AppData\Roaming\npm;C:\Program Files\Git\bin;C:\Python310\Scripts;;F:\PyCharm Community Edition 2021.3.1\bin;;C:\Users\pedro\.dotnet\tools
 
 Yarn version: 
   1.22.17
@@ -35,6 +35,7 @@ npm manifest:
       "bcryptjs": "^2.4.3",
       "cors": "^2.8.5",
       "csv-parse": "^5.0.4",
+      "dayjs": "^1.11.0",
       "express": "^4.17.3",
       "express-async-errors": "^3.1.1",
       "jsonwebtoken": "^8.5.1",
@@ -662,6 +663,11 @@ Lockfile:
     version "5.0.4"
     resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.0.4.tgz#97e5e654413bcf95f2714ce09bcb2be6de0eb8e3"
     integrity sha512-5AIdl8l6n3iYQYxan5djB5eKDa+vBnhfWZtRpJTcrETWfVLYN0WSj3L9RwvgYt+psoO77juUr8TG8qpfGZifVQ==
+  
+  dayjs@^1.11.0:
+    version "1.11.0"
+    resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.0.tgz#009bf7ef2e2ea2d5db2e6583d2d39a4b5061e805"
+    integrity sha512-JLC809s6Y948/FuCZPm5IX8rRhQwOiyMb2TfVVQEixG7P8Lm/gt5S7yoQZmC8x1UehI9Pb7sksEt4xx14m+7Ug==
   
   debug@2.6.9, debug@^2.6.9:
     version "2.6.9"

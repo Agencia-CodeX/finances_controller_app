@@ -3,10 +3,7 @@ import { UserTokens } from "../infra/typeorm/entities/userToken";
 
 interface IUserTokenRepository {
     create(data: ICreateUserTokenDTO): Promise<UserTokens>;
-    findByUserIdAndRefreshToken(
-        user_id: string,
-        refresh_token: string
-    ): Promise<UserTokens>;
+    findByUserIdAndRefreshToken(user_id: string): Promise<UserTokens>;
     deleteById(id: string): Promise<void>;
 }
 
