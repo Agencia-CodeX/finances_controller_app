@@ -3,16 +3,15 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "../context/AuthContext";
 import { GlobalStyle } from "../styles/global";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <>
+        <AuthProvider>
             <Head>
                 <title>QFinance</title>
             </Head>
-            <GlobalStyle />
-            <Component {...pageProps} />
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -22,7 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                 closeOnClick
                 pauseOnHover
             />
-        </>
+            <GlobalStyle />
+            <Component {...pageProps} />
+        </AuthProvider>
     );
 }
 

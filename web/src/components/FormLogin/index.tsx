@@ -1,32 +1,28 @@
-import { FormEvent, useState } from "react";
-import { toast } from "react-toastify";
+import { FormEvent, useContext, useState } from "react";
 
-import { validateEmail } from "../../utils/ValidateEmails";
+import { AuthContext } from "../../context/AuthContext";
+import { ValidateLoginForm } from "../../utils/ValidateLoginForm";
 import { ContentForm, FormBox, LoginButton, RegisterButton } from "./styles";
 
 export function FormLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassaword] = useState("");
 
+    const { singIn } = useContext(AuthContext);
+
     async function handleLogin(event: FormEvent) {
         event.preventDefault();
 
-        if (!email) {
-            toast.error("Digite seu E-mail!");
+        const formLoginData = {
+            email,
+            password,
+        };
+
+        if (ValidateLoginForm(formLoginData)) {
             return;
         }
 
-        if (!validateEmail(email)) {
-            toast.error("E-mail inválido!");
-            return;
-        }
-
-        if (!password) {
-            toast.error("Digite sua senha");
-            return;
-        }
-
-        console.log(email, password);
+        await singIn(formLoginData);
 
         setEmail("");
         setPassaword("");

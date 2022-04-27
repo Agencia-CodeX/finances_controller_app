@@ -5,7 +5,6 @@ import { Presentation } from "../components/Presentation";
 import { Content, MainBackground } from "../styles/login-register";
 
 export default function Login() {
-    console.log("1");
     return (
         <>
             <Head>

@@ -5,7 +5,7 @@ export const ImageBg = styled.div`
     height: auto;
 
     img {
-        width: 1050px;
+        width: 900px;
         position: absolute;
         bottom: 0;
         left: 90px;
@@ -48,6 +48,22 @@ export const ContentLeft = styled.section`
         }
     }
 
+    @media (max-height: 900px) and (min-width: 1200px) {
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        ${ImageBg} {
+            img {
+                width: 600px;
+            }
+        }
+    }
+
     @media (max-height: 810px) and (min-width: 1200px) {
         h1 {
             font-size: 2.5rem;
@@ -75,12 +91,12 @@ export const ContentLeft = styled.section`
 
         ${ImageBg} {
             img {
-                width: 510px;
+                width: 480px;
             }
         }
     }
 
-    @media (max-height: 650px) and (min-width: 1200px) {
+    @media (max-height: 660px) and (min-width: 1200px) {
         h1 {
             font-size: 2rem;
         }
@@ -96,7 +112,7 @@ export const ContentLeft = styled.section`
         }
     }
 
-    @media (max-height: 600px) and (min-width: 1200px) {
+    @media (max-height: 610px) and (min-width: 1200px) {
         h1 {
             font-size: 2rem;
         }

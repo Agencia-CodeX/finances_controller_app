@@ -1,11 +1,12 @@
+import { verify } from "jsonwebtoken";
+import Router from "next/router";
 import { FormEvent, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { toast } from "react-toastify";
 
+import { secret } from "../../env";
 import { api } from "../../service/api";
-import { validateEmail } from "../../utils/ValidateEmails";
-import { ValidatePassaword } from "../../utils/ValidatePassword";
-import { ValidateSpecialCharacters } from "../../utils/ValidateSpeciaCharacters";
+import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
 export function FormRegister() {
@@ -17,49 +18,13 @@ export function FormRegister() {
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
 
-        if (!name) {
-            toast.error("Digite seu Nome!");
+        const formRegisterData = { name, email, password, confirmPassword };
+
+        if (ValidateRegisterForm(formRegisterData)) {
             return;
         }
 
-        if (!ValidateSpecialCharacters(name)) {
-            toast.error("Nome não pode conter caracteres especiais!");
-            return;
-        }
-
-        if (!email) {
-            toast.error("Digite seu E-mail!");
-            return;
-        }
-
-        if (!validateEmail(email)) {
-            toast.error("E-mail inválido!");
-            return;
-        }
-
-        if (!password) {
-            toast.error("Digite sua senha");
-            return;
-        }
-
-        const ValidateStrongPassaword = ValidatePassaword(password);
-
-        if (!ValidateStrongPassaword.result) {
-            ValidateStrongPassaword.message.map((message) =>
-                toast.error(message)
-            );
-            return;
-        }
-
-        if (!confirmPassword) {
-            toast.error("Confirme sua senha!");
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            toast.error("As senhas não são iguais!");
-            return;
-        }
+        const idToast = toast.loading("Carregando...");
 
         await api
             .post("users", {
@@ -67,16 +32,49 @@ export function FormRegister() {
                 Email: email,
                 Password: password,
             })
-            .then(() => {
-                window.location.href = "/new-user";
+            .then(async (response) => {
+                const { data } = response;
+
+                console.log(data);
+
+                toast.dismiss(idToast);
+
+                setName("");
+                setEmail("");
+                setPassword("");
+                setConfirmPassroword("");
+
+                // Router.push("/new-user");
             })
             .catch((error) => {
-                if (error.response.data.error === "Users already exists!") {
-                    toast.error("E-mail já cadastrado!");
+                if (error.message === "Network Error") {
+                    toast.update(idToast, {
+                        render: "Ocorreu um erro, tente novamente mais tarde!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
+                } else if (
+                    error.response.data.error === "Users already exists!"
+                ) {
+                    toast.update(idToast, {
+                        render: "E-mail já cadastrado!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
+                } else {
+                    toast.update(idToast, {
+                        render: "Ocorreu um erro, tente novamente mais tarde!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
                 }
             });
-
-        // message, config, code, request, response
     }
 
     return (
