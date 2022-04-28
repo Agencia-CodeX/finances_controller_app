@@ -19,7 +19,7 @@ export const Header = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 ${RFValue(50)}px;
+    padding: 0 ${RFValue(45)}px;
 `;
 
 export const Profile = styled.View`
@@ -133,7 +133,7 @@ export const BudgetData = styled.Text`
 export const Footer = styled.View`
     width: 100%;
     position: absolute;
-    bottom: ${RFValue(180)}px;
+    bottom: ${RFValue(170)}px;
     margin-bottom: ${getBottomSpace()}px;
     padding: 0 ${RFValue(25)}px;
 `;
