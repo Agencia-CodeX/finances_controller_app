@@ -7,7 +7,7 @@ import { api } from "../service/api";
 export default function NewUser() {
     const { user } = useContext(AuthContext);
 
-    console.log(user);
+
 
     useEffect(() => {
         api.get("/users/info")
@@ -16,10 +16,10 @@ export default function NewUser() {
             })
             .catch((error) => {
                 console.log(error.response);
-            });
-
-        toast.success(`Seja bem vindo ${user?.name}!`);
+            })
     }, []);
 
-    return <h1>Hello World!</h1>;
+    return (
+        <h1>Hello World! {user?.name}</h1>
+    );
 }

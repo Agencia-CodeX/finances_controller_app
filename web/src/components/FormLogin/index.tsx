@@ -22,10 +22,12 @@ export function FormLogin() {
             return;
         }
 
-        await singIn(formLoginData);
+        try {
+            await singIn(formLoginData);
 
-        setEmail("");
-        setPassaword("");
+            setEmail("");
+            setPassaword("");
+        } catch { }
     }
 
     return (

@@ -32,7 +32,9 @@
             "error",
             {
                 "selector": "interface",
-                "format": ["PascalCase"],
+                "format": [
+                    "PascalCase"
+                ],
                 "custom": {
                     "regex": "^I[A-Z]",
                     "match": true
@@ -46,10 +48,20 @@
         "no-useless-constructor": "off",
         "no-empty-function": "off",
         "lines-between-class-members": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "off",
         "react/function-component-definition": "off",
+        "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+        "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -62,15 +74,35 @@
             "warn",
             {
                 "newlinesBetween": "always",
-                "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-                "alphabetize": { "order": "asc", "ignoreCase": true }
+                "groups": [
+                    "module",
+                    "/^@shared/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
             }
         ],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.spec.js"] }
+            {
+                "devDependencies": [
+                    "**/*.spec.js"
+                ]
+            }
         ],
-        "prettier/prettier": ["error", { "endOfLine": "auto" }] 
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
     },
     "settings": {
         "import/resolver": {
@@ -86,4 +118,3 @@
         }
     }
 }
-
