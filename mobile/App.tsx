@@ -8,10 +8,11 @@ import {
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { ScrollView } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 import { ThemeProvider } from "styled-components";
 
 import theme from "./src/global/styles/theme";
+import { ConfigurationsPage } from "./src/pages/ConfigurationsPage";
 import { Login } from "./src/pages/Login";
 import { MyConfigurationsFilled } from "./src/pages/MyConfigurationsFilled";
 import { MyConfigurations } from "./src/pages/MyConfigurationsPage";
@@ -33,7 +34,7 @@ export default function App() {
     return (
         <ThemeProvider theme={theme}>
             <StatusBar style="light" />
-            <MyConfigurationsFilled />
+            <ConfigurationsPage />
         </ThemeProvider>
     );
 }
