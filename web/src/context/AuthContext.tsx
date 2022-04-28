@@ -5,8 +5,7 @@ import Router from "next/router";
 import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
-import { api } from "../service/api";
+import { api } from "../service/apiClient";
 
 type SingInCredentials = {
     email: string;
@@ -102,7 +101,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
                 if (!isVip) {
-                    Router.push("/new-user");
+                    Router.push("/dashboard");
                 }
             })
             .catch((error) => {
