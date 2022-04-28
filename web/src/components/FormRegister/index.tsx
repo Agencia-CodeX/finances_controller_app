@@ -1,10 +1,8 @@
-import { verify } from "jsonwebtoken";
-import Router from "next/router";
+import { AxiosError } from "axios";
 import { FormEvent, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { toast } from "react-toastify";
 
-import { secret } from "../../env";
 import { api } from "../../service/api";
 import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
@@ -28,9 +26,9 @@ export function FormRegister() {
 
         await api
             .post("users", {
-                Name: name,
-                Email: email,
-                Password: password,
+                name,
+                email,
+                password,
             })
             .then(async (response) => {
                 const { data } = response;
@@ -46,7 +44,7 @@ export function FormRegister() {
 
                 // Router.push("/new-user");
             })
-            .catch((error) => {
+            .catch((error: AxiosError) => {
                 if (error.message === "Network Error") {
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",
@@ -66,6 +64,7 @@ export function FormRegister() {
                         closeOnClick: true,
                     });
                 } else {
+                    console.log(error.response);
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",
                         type: "error",
