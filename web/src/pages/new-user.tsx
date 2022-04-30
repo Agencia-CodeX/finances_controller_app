@@ -2,15 +2,15 @@ import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 
 import { AuthContext } from "../context/AuthContext";
-import { api } from "../service/api";
+import { setupAPIClient } from "../service/api";
 
 export default function NewUser() {
     const { user } = useContext(AuthContext);
 
-
-
     useEffect(() => {
-        api.get("/users/info")
+        const apiClient = setupAPIClient()
+
+        apiClient.get("/users/info")
             .then((response) => {
                 console.log(response);
             })

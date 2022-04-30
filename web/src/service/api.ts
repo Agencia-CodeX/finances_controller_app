@@ -2,7 +2,8 @@
 /* eslint-disable dot-notation */
 import axios, { AxiosError } from "axios";
 import { parseCookies, setCookie } from "nookies";
-import { singOut } from "../context/AuthContext";
+import { signOut } from "../context/AuthContext";
+import { AuthTokenError } from "../errors/AuthTokenError";
 
 
 let isRefreshing = false;
@@ -22,7 +23,6 @@ export function setupAPIClient(ctx = undefined) {
             return response;
         },
         (error: AxiosError) => {
-            console.log(error.response, api.defaults.headers["Authorization"])
             if (error.response.status === 401) {
                 if (error.response?.data.error === "Invalid token!") {
                     cookies = parseCookies(ctx);
@@ -34,10 +34,11 @@ export function setupAPIClient(ctx = undefined) {
                         isRefreshing = true;
 
                         api.post("refresh-token", {
-                            refreshToken,
+                            refresh_token: refreshToken,
                         })
                             .then((response) => {
                                 const { token } = response.data;
+                                console.log("Refresh")
 
                                 setCookie(ctx, "qfinance.token", token, {
                                     maxAge: 60 * 60 * 24 * 30, // 30 dias
@@ -69,8 +70,8 @@ export function setupAPIClient(ctx = undefined) {
                                 );
                                 failedRequestQueue = [];
 
-                                if (typeof window === 'undefined') {
-                                    singOut()
+                                if (typeof window !== 'undefined') {
+                                    signOut()
                                 }
                             })
                             .finally(() => {
@@ -94,8 +95,10 @@ export function setupAPIClient(ctx = undefined) {
                     });
                 }
                 else {
-                    if (typeof window === 'undefined') {
-                        singOut()
+                    if (typeof window !== 'undefined') {
+                        signOut()
+                    } else {
+                        return Promise.reject(new AuthTokenError())
                     }
                 }
             }

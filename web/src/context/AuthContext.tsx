@@ -13,7 +13,8 @@ type SingInCredentials = {
 };
 
 type AuthContextData = {
-    singIn(credentials: SingInCredentials): Promise<void>;
+    singIn: (credentials: SingInCredentials) => Promise<void>;
+    signOut: () => void;
     user: User;
     isAuthenticated: boolean;
 };
@@ -31,9 +32,13 @@ type User = {
 
 export const AuthContext = createContext({} as AuthContextData);
 
-export function singOut() {
+let authChannel: BroadcastChannel
+
+export function signOut() {
     destroyCookie(undefined, "qfinance.token")
     destroyCookie(undefined, "qfinance.refreshToken")
+
+    authChannel.postMessage('signOut')
 
     Router.push("/login")
 }
@@ -41,6 +46,20 @@ export function singOut() {
 export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<User>();
     const isAuthenticated = !!user;
+
+    useEffect(() => {
+        authChannel = new BroadcastChannel("auth")
+
+        authChannel.onmessage = (message) => {
+            switch (message.data) {
+                case "signOut":
+                    Router.push("/login")
+                    break
+                default:
+                    break
+            }
+        }
+    })
 
     useEffect(() => {
         const { "qfinance.token": token } = parseCookies();
@@ -62,7 +81,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     });
                 })
                 .catch((() => {
-                    singOut()
+                    signOut()
                 }))
         }
     }, []);
@@ -100,9 +119,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-                if (!isVip) {
-                    Router.push("/dashboard");
-                }
+                Router.push("/dashboard");
             })
             .catch((error) => {
                 if (error.response?.data?.code === "creditials.invalid") {
@@ -128,7 +145,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{ singIn, isAuthenticated, user }}>
+        <AuthContext.Provider value={{ singIn, signOut, isAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     );
