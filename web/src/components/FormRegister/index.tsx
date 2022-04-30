@@ -1,11 +1,9 @@
-import { verify } from "jsonwebtoken";
-import Router from "next/router";
+import { AxiosError } from "axios";
 import { FormEvent, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { toast } from "react-toastify";
 
-import { secret } from "../../env";
-import { api } from "../../service/api";
+import { setupAPIClient } from "../../service/api";
 import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
@@ -14,6 +12,8 @@ export function FormRegister() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassroword] = useState("");
+
+    const apiClient = setupAPIClient()
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
@@ -26,16 +26,14 @@ export function FormRegister() {
 
         const idToast = toast.loading("Carregando...");
 
-        await api
+        await apiClient
             .post("users", {
-                Name: name,
-                Email: email,
-                Password: password,
+                name,
+                email,
+                password,
             })
             .then(async (response) => {
                 const { data } = response;
-
-                console.log(data);
 
                 toast.dismiss(idToast);
 
@@ -46,7 +44,7 @@ export function FormRegister() {
 
                 // Router.push("/new-user");
             })
-            .catch((error) => {
+            .catch((error: AxiosError) => {
                 if (error.message === "Network Error") {
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",

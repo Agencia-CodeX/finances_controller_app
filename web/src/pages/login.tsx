@@ -1,8 +1,11 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { parseCookies } from "nookies";
 
 import { FormLogin } from "../components/FormLogin";
 import { Presentation } from "../components/Presentation";
 import { Content, MainBackground } from "../styles/login-register";
+import { withSSRGuest } from "../utils/withSSRGuest";
 
 export default function Login() {
     return (
@@ -19,3 +22,10 @@ export default function Login() {
         </>
     );
 }
+
+
+export const getServerSideProps = withSSRGuest(async (ctx) => {
+    return {
+        props: {}
+    }
+})

@@ -29,7 +29,7 @@ class CreateUserUseCase {
         private usersRepository: IUsersRepository,
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
-    ) {}
+    ) { }
 
     async execute({
         email,

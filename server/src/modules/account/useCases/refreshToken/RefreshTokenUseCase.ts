@@ -21,21 +21,21 @@ class RefreshTokenUseCase {
         private dateProvider: IDateProvider,
         @inject("UsersRepository")
         private usersRepository: IUsersRepository
-    ) {}
-    async execute({ id_user }: IRequest) {
+    ) { }
+    async execute({ refresh_token, id_user }: IRequest) {
         const user = await this.usersRepository.findById(id_user);
 
         if (!user) {
-            throw new AppError("User does not exists!");
+            throw new AppError("User does not exists!", 401);
         }
 
         const userToken =
-            await this.userTokenRepository.findByUserIdAndRefreshToken(
-                user.id_user
+            await this.userTokenRepository.findByRefreshToken(
+                refresh_token,
             );
 
         if (!userToken) {
-            throw new AppError("Refresh Token Error!");
+            throw new AppError("Refresh Token Error!", 401);
         }
 
         await this.userTokenRepository.deleteById(userToken.id_token);

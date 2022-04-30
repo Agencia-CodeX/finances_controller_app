@@ -2,11 +2,10 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { AxiosError } from "axios";
 import Router from "next/router";
-import { parseCookies, setCookie } from "nookies";
+import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
-import { api } from "../service/api";
+import { api } from "../service/apiClient";
 
 type SingInCredentials = {
     email: string;
@@ -14,7 +13,8 @@ type SingInCredentials = {
 };
 
 type AuthContextData = {
-    singIn(credentials: SingInCredentials): Promise<void>;
+    singIn: (credentials: SingInCredentials) => Promise<void>;
+    signOut: () => void;
     user: User;
     isAuthenticated: boolean;
 };
@@ -27,14 +27,39 @@ type User = {
     name: string;
     email: string;
     isVip: boolean;
-    isAdmin: boolean;
+    isAdmin?: boolean;
 };
 
 export const AuthContext = createContext({} as AuthContextData);
 
+let authChannel: BroadcastChannel
+
+export function signOut() {
+    destroyCookie(undefined, "qfinance.token")
+    destroyCookie(undefined, "qfinance.refreshToken")
+
+    authChannel.postMessage('signOut')
+
+    Router.push("/login")
+}
+
 export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<User>();
     const isAuthenticated = !!user;
+
+    useEffect(() => {
+        authChannel = new BroadcastChannel("auth")
+
+        authChannel.onmessage = (message) => {
+            switch (message.data) {
+                case "signOut":
+                    Router.push("/login")
+                    break
+                default:
+                    break
+            }
+        }
+    })
 
     useEffect(() => {
         const { "qfinance.token": token } = parseCookies();
@@ -42,12 +67,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
         if (token) {
             api.get("/users/info")
                 .then((response) => {
-                    const { name, email, isVip, isAdmin } = response.data;
-                    setUser({ name, email, isVip, isAdmin });
+                    const {
+                        name,
+                        email,
+                        isVip,
+                        isAdmin,
+                    } = response.data;
+                    setUser({
+                        name,
+                        email,
+                        isVip,
+                        isAdmin,
+                    });
                 })
-                .catch((error: AxiosError) => {
-                    console.log(error.response);
-                });
+                .catch((() => {
+                    signOut()
+                }))
         }
     }, []);
 
@@ -56,16 +91,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         await api
             .post("sessions", {
-                Email: email,
-                Password: password,
+                email: email,
+                password: password,
             })
             .then((response) => {
                 console.log(response);
-                const { token, Refresh_token, user } = response.data;
+                const { token, refresh_token, user } = response.data;
 
-                const name = user.Name;
-                const isVip = user.IsVip;
-                const isAdmin = user.IsAdmin;
+                const name = user.name;
+                const isVip = user.is_Vip;
+                const isAdmin = user.is_Admin;
 
                 setUser({ name, email, isVip, isAdmin });
 
@@ -73,7 +108,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     maxAge: 60 * 60 * 24 * 30, // 30 dias
                     path: "/",
                 });
-                setCookie(undefined, "qfinance.refreshToken", Refresh_token, {
+                setCookie(undefined, "qfinance.refreshToken", refresh_token, {
                     maxAge: 60 * 60 * 24 * 30, // 30 dias
                     path: "/",
                 });
@@ -84,12 +119,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-                if (!isVip) {
-                    Router.push("/new-user");
-                }
+                Router.push("/dashboard");
             })
             .catch((error) => {
-                console.log(error.response);
                 if (error.response?.data?.code === "creditials.invalid") {
                     toast.update(idToast, {
                         render: "E-mail ou senha incorreto!",
@@ -98,6 +130,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
+                    throw new error();
                 } else {
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",
@@ -106,12 +139,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
+                    throw new error();
                 }
             });
     }
 
     return (
-        <AuthContext.Provider value={{ singIn, isAuthenticated, user }}>
+        <AuthContext.Provider value={{ singIn, signOut, isAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     );
