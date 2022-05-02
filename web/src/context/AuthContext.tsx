@@ -12,8 +12,15 @@ type SingInCredentials = {
     password: string;
 };
 
+type RegisterCredentials = {
+    name: string;
+    email: string;
+    password: string;
+};
+
 type AuthContextData = {
     singIn: (credentials: SingInCredentials) => Promise<void>;
+    register: (credentials: RegisterCredentials) => Promise<void>
     signOut: () => void;
     user: User;
     isAuthenticated: boolean;
@@ -95,7 +102,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 password: password,
             })
             .then((response) => {
-                console.log(response);
                 const { token, refresh_token, user } = response.data;
 
                 const name = user.name;
@@ -144,8 +150,70 @@ export function AuthProvider({ children }: AuthProviderProps) {
             });
     }
 
+    async function register({ name, email, password }: RegisterCredentials) {
+        const idToast = toast.loading("Carregando...");
+
+        await api
+            .post("users", {
+                name,
+                email,
+                password,
+            })
+            .then(async (response) => {
+                const { token, refresh_token, user } = response.data;
+
+                const isVip = user.is_Vip;
+                const isAdmin = user.is_Admin;
+
+                setUser({ name, email, isVip, isAdmin });
+
+                setCookie(undefined, "qfinance.token", token, {
+                    maxAge: 60 * 60 * 24 * 30, // 30 dias
+                    path: "/",
+                });
+                setCookie(undefined, "qfinance.refreshToken", refresh_token, {
+                    maxAge: 60 * 60 * 24 * 30, // 30 dias
+                    path: "/",
+                });
+
+                toast.dismiss(idToast);
+
+                Router.push("/signature");
+            })
+            .catch((error: AxiosError) => {
+                if (error.message === "Network Error") {
+                    toast.update(idToast, {
+                        render: "Ocorreu um erro, tente novamente mais tarde!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
+                } else if (
+                    error.response.data.error === "Users already exists!"
+                ) {
+                    toast.update(idToast, {
+                        render: "E-mail já cadastrado!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
+                } else {
+                    toast.update(idToast, {
+                        render: "Ocorreu um erro, tente novamente mais tarde!",
+                        type: "error",
+                        isLoading: false,
+                        autoClose: 5000,
+                        closeOnClick: true,
+                    });
+                }
+            });
+
+    }
+
     return (
-        <AuthContext.Provider value={{ singIn, signOut, isAuthenticated, user }}>
+        <AuthContext.Provider value={{ singIn, register, signOut, isAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     );
