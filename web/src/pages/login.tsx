@@ -1,6 +1,4 @@
-import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { parseCookies } from "nookies";
 
 import { FormLogin } from "../components/FormLogin";
 import { Presentation } from "../components/Presentation";

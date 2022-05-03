@@ -16,6 +16,12 @@ export const GlobalStyle = createGlobalStyle`
         --linear_blue: linear-gradient(90deg, #000639 0%, rgba(43, 0, 69, 0.65) 100%);
     }
 
+    @media (min-width: 2000px) {
+        html {
+            font-size: 115%;
+        }
+    }
+
     @media (max-width: 1080px) {
         html {
             font-size: 93.75%;

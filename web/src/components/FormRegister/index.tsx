@@ -1,9 +1,7 @@
-import { AxiosError } from "axios";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 
-import { setupAPIClient } from "../../service/api";
 import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
@@ -12,8 +10,7 @@ export function FormRegister() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassroword] = useState("");
-
-    const apiClient = setupAPIClient()
+    const { register } = useContext(AuthContext)
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
@@ -24,55 +21,16 @@ export function FormRegister() {
             return;
         }
 
-        const idToast = toast.loading("Carregando...");
+        try {
+            await register({ name, email, password });
 
-        await apiClient
-            .post("users", {
-                name,
-                email,
-                password,
-            })
-            .then(async (response) => {
-                const { data } = response;
+            setName("");
+            setEmail("");
+            setPassword("");
+            setConfirmPassroword("");
+        } catch { }
 
-                toast.dismiss(idToast);
 
-                setName("");
-                setEmail("");
-                setPassword("");
-                setConfirmPassroword("");
-
-                // Router.push("/new-user");
-            })
-            .catch((error: AxiosError) => {
-                if (error.message === "Network Error") {
-                    toast.update(idToast, {
-                        render: "Ocorreu um erro, tente novamente mais tarde!",
-                        type: "error",
-                        isLoading: false,
-                        autoClose: 5000,
-                        closeOnClick: true,
-                    });
-                } else if (
-                    error.response.data.error === "Users already exists!"
-                ) {
-                    toast.update(idToast, {
-                        render: "E-mail já cadastrado!",
-                        type: "error",
-                        isLoading: false,
-                        autoClose: 5000,
-                        closeOnClick: true,
-                    });
-                } else {
-                    toast.update(idToast, {
-                        render: "Ocorreu um erro, tente novamente mais tarde!",
-                        type: "error",
-                        isLoading: false,
-                        autoClose: 5000,
-                        closeOnClick: true,
-                    });
-                }
-            });
     }
 
     return (

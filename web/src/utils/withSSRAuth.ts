@@ -28,7 +28,7 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>): GetServerSideProps {
         if (!decoded.is_vip) {
             return {
                 redirect: {
-                    destination: "/new-user",
+                    destination: "/signature",
                     permanent: false,
                 }
             }

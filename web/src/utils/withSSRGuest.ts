@@ -25,7 +25,7 @@ export function withSSRGuest<P>(fn: GetServerSideProps<P>): GetServerSideProps {
             } else {
                 return {
                     redirect: {
-                        destination: "/new-user",
+                        destination: "/signature",
                         permanent: false,
                     }
                 }
