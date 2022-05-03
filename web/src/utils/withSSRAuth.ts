@@ -23,29 +23,41 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>): GetServerSideProps {
             }
         }
 
-        const decoded = decode(token as string) as ITokenProps;
-
-        if (!decoded.is_vip) {
-            return {
-                redirect: {
-                    destination: "/signature",
-                    permanent: false,
-                }
-            }
-        }
-
         try {
-            return await fn(ctx)
-        } catch (err) {
-            if (err instanceof AuthTokenError) {
-                destroyCookie(ctx, "qfinance.token")
-                destroyCookie(ctx, "qfinance.refreshToken")
+            const decoded = decode(token as string) as ITokenProps;
 
+            if (!decoded.is_vip) {
                 return {
                     redirect: {
-                        destination: "/login",
-                        permanent: false
+                        destination: "/signature",
+                        permanent: false,
                     }
+                }
+            }
+
+            try {
+                return await fn(ctx)
+            } catch (err) {
+                if (err instanceof AuthTokenError) {
+                    destroyCookie(ctx, "qfinance.token")
+                    destroyCookie(ctx, "qfinance.refreshToken")
+
+                    return {
+                        redirect: {
+                            destination: "/login",
+                            permanent: false
+                        }
+                    }
+                }
+            }
+        } catch {
+            destroyCookie(ctx, "qfinance.token")
+            destroyCookie(ctx, "qfinance.refreshToken")
+
+            return {
+                redirect: {
+                    destination: "/login",
+                    permanent: false
                 }
             }
         }

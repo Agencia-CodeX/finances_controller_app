@@ -1,5 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from "next"
-import { parseCookies } from "nookies"
+import { destroyCookie, parseCookies } from "nookies"
 import decode from "jwt-decode";
 
 interface ITokenProps {
@@ -13,19 +13,31 @@ export function withSSRGuest<P>(fn: GetServerSideProps<P>): GetServerSideProps {
         const token = cookies["qfinance.token"]
 
         if (token) {
-            const decoded = decode(token as string) as ITokenProps;
+            try {
+                const decoded = decode(token as string) as ITokenProps;
 
-            if (decoded.is_vip) {
-                return {
-                    redirect: {
-                        destination: "/dashboard",
-                        permanent: false,
+                if (decoded.is_vip) {
+                    return {
+                        redirect: {
+                            destination: "/dashboard",
+                            permanent: false,
+                        }
+                    }
+                } else {
+                    return {
+                        redirect: {
+                            destination: "/signature",
+                            permanent: false,
+                        }
                     }
                 }
-            } else {
+            } catch {
+                destroyCookie(ctx, "qfinance.token")
+                destroyCookie(ctx, "qfinance.refreshToken")
+
                 return {
                     redirect: {
-                        destination: "/signature",
+                        destination: "/login",
                         permanent: false,
                     }
                 }

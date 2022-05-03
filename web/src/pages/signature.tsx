@@ -130,7 +130,7 @@ export default function Singnature({ user }: ISignatureProps) {
 export const getServerSideProps = WithSSRAuthNotVip(async (ctx) => {
     const apiClient = setupAPIClient(ctx)
 
-    const user = await apiClient.get("/users/info").then((response) => response.data)
+    const user = await apiClient.get("/users/info").then((response) => response.data).catch((err) => console.log(err))
 
     return {
         props: {

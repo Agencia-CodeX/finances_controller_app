@@ -1,22 +1,14 @@
 import { withSSRAuth } from "../utils/withSSRAuth";
-import { api } from "../service/apiClient";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { setupAPIClient } from "../service/api";
+import { MainBackground } from "../styles/dashboard";
+import { SideMenu } from "../components/SideMenu";
 
 export default function Dashboard() {
-    const { user, signOut } = useContext(AuthContext)
-
-    useEffect(() => {
-        api.get("users/info").then(response => console.log(response))
-    })
 
     return (
-        <>
-            <h1>Hello Assinante! {user?.name}</h1>
-
-            <button onClick={signOut}>SignOut</button>
-        </>
+        <MainBackground>
+            <SideMenu />
+        </MainBackground>
     );
 }
 
