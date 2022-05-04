@@ -17,6 +17,7 @@ interface IResponse {
         email: string;
         is_vip: boolean;
         is_admin: boolean;
+        phone: number;
     };
 }
 
@@ -35,6 +36,7 @@ class CreateUserUseCase {
         email,
         name,
         password,
+        phone
     }: ICreateUserDTO): Promise<IResponse> {
         const userAlreadyExists = await this.usersRepository.findByEmail(email);
         if (userAlreadyExists) {
@@ -46,6 +48,7 @@ class CreateUserUseCase {
             email,
             name,
             password: passwordHash,
+            phone,
         });
 
         const { token, refresh_token: newRefreshToken } =
