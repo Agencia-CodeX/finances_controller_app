@@ -33,7 +33,7 @@ class AuthenticateUserUseCase {
         private userTokenRepository: IUserTokenRepository,
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
-    ) {}
+    ) { }
 
     async execute({ email, password }: IRequest): Promise<IResponse> {
         const user = await this.usersRepository.findByEmail(email);
@@ -46,6 +46,15 @@ class AuthenticateUserUseCase {
 
         if (!passwordMatch) {
             throw new AppError("email or password incorrect!");
+        }
+
+        const userToken =
+            await this.userTokenRepository.findByUserId(
+                user.id_user
+            );
+
+        if (userToken) {
+            await this.userTokenRepository.deleteById(userToken.id_token);
         }
 
         const { token, refresh_token: newRefreshToken } =

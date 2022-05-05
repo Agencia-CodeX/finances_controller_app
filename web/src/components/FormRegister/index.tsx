@@ -1,11 +1,8 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 
-import { api } from "../../service/api";
-import { validateEmail } from "../../utils/ValidateEmails";
-import { ValidatePassaword } from "../../utils/ValidatePassword";
-import { ValidateSpecialCharacters } from "../../utils/ValidateSpeciaCharacters";
+import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
 export function FormRegister() {
@@ -13,70 +10,27 @@ export function FormRegister() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassroword] = useState("");
+    const { register } = useContext(AuthContext)
 
     async function handleRegister(event: FormEvent) {
         event.preventDefault();
 
-        if (!name) {
-            toast.error("Digite seu Nome!");
+        const formRegisterData = { name, email, password, confirmPassword };
+
+        if (ValidateRegisterForm(formRegisterData)) {
             return;
         }
 
-        if (!ValidateSpecialCharacters(name)) {
-            toast.error("Nome não pode conter caracteres especiais!");
-            return;
-        }
+        try {
+            await register({ name, email, password });
 
-        if (!email) {
-            toast.error("Digite seu E-mail!");
-            return;
-        }
+            setName("");
+            setEmail("");
+            setPassword("");
+            setConfirmPassroword("");
+        } catch { }
 
-        if (!validateEmail(email)) {
-            toast.error("E-mail inválido!");
-            return;
-        }
 
-        if (!password) {
-            toast.error("Digite sua senha");
-            return;
-        }
-
-        const ValidateStrongPassaword = ValidatePassaword(password);
-
-        if (!ValidateStrongPassaword.result) {
-            ValidateStrongPassaword.message.map((message) =>
-                toast.error(message)
-            );
-            return;
-        }
-
-        if (!confirmPassword) {
-            toast.error("Confirme sua senha!");
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            toast.error("As senhas não são iguais!");
-            return;
-        }
-
-        await api
-            .post("users", {
-                Name: name,
-                Email: email,
-                Password: password,
-            })
-            .then(() => {
-                window.location.href = "/new-user";
-            })
-            .catch((error) => {
-                if (error.response.data.error === "Users already exists!") {
-                    toast.error("E-mail já cadastrado!");
-                }
-            });
-
-        // message, config, code, request, response
     }
 
     return (

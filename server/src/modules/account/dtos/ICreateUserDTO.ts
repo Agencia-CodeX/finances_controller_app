@@ -4,6 +4,7 @@ interface ICreateUserDTO {
     email: string;
     password: string;
     avatar?: string;
+    phone?: number;
     is_vip?: boolean;
     vip_expires_date?: Date;
 }

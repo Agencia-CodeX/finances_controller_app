@@ -28,13 +28,17 @@
             "error",
             {
                 "selector": "interface",
-                "format": ["PascalCase"],
+                "format": [
+                    "PascalCase"
+                ],
                 "custom": {
                     "regex": "^I[A-Z]",
                     "match": true
                 }
             }
         ],
+        "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+        "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
         "no-shadow": "off",
@@ -54,15 +58,35 @@
             "warn",
             {
                 "newlinesBetween": "always",
-                "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
-                "alphabetize": { "order": "asc", "ignoreCase": true }
+                "groups": [
+                    "module",
+                    "/^@shared/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
             }
         ],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.spec.js"] }
+            {
+                "devDependencies": [
+                    "**/*.spec.js"
+                ]
+            }
         ],
-        "prettier/prettier": ["error", { "endOfLine": "auto" }] 
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
     },
     "settings": {
         "import/resolver": {

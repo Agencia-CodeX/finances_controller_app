@@ -3,9 +3,9 @@ import Head from "next/head";
 import { FormLogin } from "../components/FormLogin";
 import { Presentation } from "../components/Presentation";
 import { Content, MainBackground } from "../styles/login-register";
+import { withSSRGuest } from "../utils/withSSRGuest";
 
 export default function Login() {
-    console.log("1");
     return (
         <>
             <Head>
@@ -20,3 +20,10 @@ export default function Login() {
         </>
     );
 }
+
+
+export const getServerSideProps = withSSRGuest(async (ctx) => {
+    return {
+        props: {}
+    }
+})

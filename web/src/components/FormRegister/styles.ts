@@ -31,7 +31,7 @@ export const FormBox = styled.div`
     padding: 13px 12px;
 
     input {
-        background: rgba(255, 255, 255, 0.1);
+        background: #252530;
         color: var(--white);
         padding: 15px 25px;
         border-radius: 1.5rem;
@@ -41,6 +41,15 @@ export const FormBox = styled.div`
 
         display: flex;
         flex-direction: column;
+
+        :-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #252530 inset;
+            box-shadow: 0 0 0 30px #252530 inset;
+        }
+
+        :-webkit-autofill {
+            -webkit-text-fill-color: var(--white) !important;
+        }
 
         &::placeholder {
             color: var(--white);
