@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
 import { DiamondIcon } from "../../global/Components/DiamondIcon";
 import { DiceIcon } from "../../global/Components/DiceIcon";
 import { GradientBackground } from "../../global/Components/GradientBackground";
 import { LinearBackgroundButton } from "../../global/Components/GradientButton";
+import { HeaderNavigator } from "../../global/Components/HeaderNavigator";
 import { HomeIcon } from "../../global/Components/HomeIcon";
 import { JoystickIcon } from "../../global/Components/JoystickIcon";
 import { ProfileImage } from "../../global/Components/ProfileImage";
@@ -26,20 +28,29 @@ import {
     Button,
     MyCategories,
     CardsIcons,
+    ProfileInformations,
 } from "./styles";
 
-export function MyConfigurationsFilled() {
+export function MyConfigurationsFilled({ navigation }: any) {
     return (
         <Container>
             <GradientBackground />
             <Header>
-                <Profile>
-                    <ProfileImage urlImage="https://media-exp1.licdn.com/dms/image/C5603AQEjKVPfTg2L0g/profile-displayphoto-shrink_200_200/0/1642122511131?e=1654128000&v=beta&t=ijZ83vtkA6122pI1AK8oEktWt-GKMVaZ9nQyhcpfkow" />
-                    <AlterButton>
-                        <AlterTextButton>Alterar</AlterTextButton>
-                    </AlterButton>
-                </Profile>
-                <Title>Olá, Guilherme{"\n"}Veroneze</Title>
+                <HeaderNavigator
+                    title="Configurações"
+                    navegator={() => {
+                        navigation.goBack();
+                    }}
+                />
+                <ProfileInformations>
+                    <Profile>
+                        <ProfileImage urlImage="https://media-exp1.licdn.com/dms/image/C5603AQEjKVPfTg2L0g/profile-displayphoto-shrink_200_200/0/1642122511131?e=1654128000&v=beta&t=ijZ83vtkA6122pI1AK8oEktWt-GKMVaZ9nQyhcpfkow" />
+                        <AlterButton>
+                            <AlterTextButton>Alterar</AlterTextButton>
+                        </AlterButton>
+                    </Profile>
+                    <Title>Olá, Guilherme{"\n"}Veroneze</Title>
+                </ProfileInformations>
             </Header>
             <Main>
                 <ConfigButton>
