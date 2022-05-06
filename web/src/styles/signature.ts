@@ -85,6 +85,7 @@ export const StoresContainer = styled.div`
 export const CodeXLogo = styled.img`
     width: 340px;
     max-width: 50%;
+    margin-bottom: 30px;
 `;
 
 export const SubscriptionContainer = styled.div`
@@ -241,4 +242,39 @@ export const TextFooter = styled.p`
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
+`;
+
+export const Logout = styled.div`
+    width: 100%;
+    margin: 30px 150px 0 0;
+    display: flex;
+    justify-content: flex-end;
+
+    @media (max-width: 767px) {
+        margin: 10px;
+    }
+`;
+
+export const Button = styled.button`
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: absolute;
+
+    transition: all 0.2s;
+
+    &:hover {
+        opacity: 0.9;
+        font-size: 1.5rem;
+    }
+`;
+
+export const Icon = styled.img`
+    margin-right: 15px;
+    width: 35px;
 `;

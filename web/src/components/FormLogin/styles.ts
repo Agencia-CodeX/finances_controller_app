@@ -29,6 +29,9 @@ export const FormBox = styled.div`
 
 export const LoginButton = styled.button`
     width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 15px 0;
     margin-top: 25px;
     color: var(--white);

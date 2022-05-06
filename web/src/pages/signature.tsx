@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthContext";
 import { setupAPIClient } from "../service/api";
-import { AnnumContainer, AppImg, ButtonContainer, ButtonSubscription, CodeXLogo, CodeXLogoMinimalist, Container, Content, ContentSubscription, Details, DetailSubscription, Footer, FreeContainer, ImgContainer, ListDetails, Logo, MainBackground, MonthlyContainer, StoresContainer, SubscriptionContainer, Text, TextFooter, Title, TitleContainer, TitleSubscription, ValueSubscription } from "../styles/signature";
+import { AnnumContainer, AppImg, Button, ButtonContainer, ButtonSubscription, CodeXLogo, CodeXLogoMinimalist, Container, Content, ContentSubscription, Details, DetailSubscription, Footer, FreeContainer, Icon, ImgContainer, ListDetails, Logo, Logout, MainBackground, MonthlyContainer, StoresContainer, SubscriptionContainer, Text, TextFooter, Title, TitleContainer, TitleSubscription, ValueSubscription } from "../styles/signature";
 
 import { WithSSRAuthNotVip } from "../utils/withSSRAuthNotVip";
 
@@ -14,6 +15,7 @@ interface ISignatureProps {
 }
 
 export default function Singnature({ user }: ISignatureProps) {
+    const { signOut } = useContext(AuthContext)
 
     useEffect(() => {
         toast.success(`Boas vindas ${user.name}!`)
@@ -23,6 +25,11 @@ export default function Singnature({ user }: ISignatureProps) {
         <MainBackground>
             <Content>
                 <Container>
+                    <Logout>
+                        <Button onClick={signOut}>
+                            <Icon src="images/logout-icon.svg" /> Desconectar
+                        </Button>
+                    </Logout>
                     <Logo src="images/logo.svg"></Logo>
                     <Title>Cadastro Concluído!</Title>
                     <Text>Agora você possui acesso ao plano Grátis no App com o email <strong>{user.email}</strong>.</Text>

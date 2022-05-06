@@ -1,32 +1,79 @@
 import Router from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { Container, MenuContainer, Logo, Nav, Menu, ItemMenu, Icon, Logout, Button } from "./styles"
+import { Container, MenuContainer, Logo, ItemMenu, Icon, Logout, Button } from "./styles"
 
-export function SideMenu() {
+const sideMenuItems = {
+    dashboard: {
+        title: "Dashboard",
+        url: "/dashboard",
+        image: {
+            source: "images/dashboard-icon.svg",
+            alt: "Dashborad image"
+        }
+    },
+    despesas: {
+        title: "Despesas",
+        url: "/despesas",
+        image: {
+            source: "images/despesas-icon.svg",
+            alt: "Despesas image"
+        }
+    },
+    configuracoes: {
+        title: "Configurações",
+        url: "/configuracoes",
+        image: {
+            source: "images/configuracoes-icon.svg",
+            alt: "Configurações image"
+        }
+    },
+    perfil: {
+        title: "Perfil",
+        url: "/perfil",
+        image: {
+            source: "images/perfil-icon.svg",
+            alt: "Perfil image"
+        }
+    },
+    historico: {
+        title: "Histórico",
+        url: "/historico",
+        image: {
+            source: "images/historico-icon.svg",
+            alt: "Histórico image"
+        }
+    },
+}
+interface SideMenuProps {
+    itemActive: keyof typeof sideMenuItems
+}
+
+export function SideMenu({ itemActive }: SideMenuProps) {
     const { signOut } = useContext(AuthContext)
 
     return (
         <Container>
             <MenuContainer>
                 <Logo src="images/logo.svg" />
-                <Nav>
-                    <ItemMenu onClick={() => Router.push("/dashboard")} active>
-                        <Icon src="images/dashboard-icon.svg" /> Dashboard
-                    </ItemMenu>
-                    <ItemMenu onClick={() => Router.push("/despesas")}>
-                        <Icon src="images/despesas-icon.svg" /> Despesas
-                    </ItemMenu>
-                    <ItemMenu onClick={() => Router.push("/configuracoes")}>
-                        <Icon src="images/configuracoes-icon.svg" /> Configurações
-                    </ItemMenu>
-                    <ItemMenu onClick={() => Router.push("/perfil")}>
-                        <Icon src="images/perfil-icon.svg" /> Perfil
-                    </ItemMenu>
-                    <ItemMenu onClick={() => Router.push("/historico")}>
-                        <Icon src="images/historico-icon.svg" /> Histórico
-                    </ItemMenu>
-                </Nav >
+
+                {Object.entries(sideMenuItems).map(([key, value]) => {
+                    return (
+                        itemActive === key ?
+
+                            <ItemMenu key={key} onClick={() => Router.push(value.url)} active>
+                                <Icon src={value.image.source} alt={value.image.alt} /> {value.title}
+                            </ItemMenu>
+
+                            :
+
+                            <ItemMenu key={key} onClick={() => Router.push(value.url)}>
+                                <Icon src={value.image.source} alt={value.image.alt} /> {value.title}
+                            </ItemMenu>
+
+                    )
+                })}
+
             </MenuContainer >
             <Logout>
                 <Button onClick={signOut}>

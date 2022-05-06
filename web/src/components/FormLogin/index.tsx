@@ -2,16 +2,19 @@ import { FormEvent, useContext, useState } from "react";
 
 import { AuthContext } from "../../context/AuthContext";
 import { ValidateLoginForm } from "../../utils/ValidateLoginForm";
+import { Loading } from "../Loading";
 import { ContentForm, FormBox, LoginButton, RegisterButton } from "./styles";
 
 export function FormLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassaword] = useState("");
+    const [isLoading, setLoading] = useState(false);
 
     const { singIn } = useContext(AuthContext);
 
     async function handleLogin(event: FormEvent) {
         event.preventDefault();
+        setLoading(true);
 
         const formLoginData = {
             email,
@@ -19,15 +22,18 @@ export function FormLogin() {
         };
 
         if (ValidateLoginForm(formLoginData)) {
+            setLoading(false);
             return;
         }
 
         try {
             await singIn(formLoginData);
-
+            setLoading(false);
             setEmail("");
             setPassaword("");
-        } catch { }
+        } catch {
+            setLoading(false);
+        }
     }
 
     return (
@@ -48,13 +54,14 @@ export function FormLogin() {
                         onChange={(event) => setPassaword(event.target.value)}
                     />
                 </FormBox>
-                <LoginButton type="submit">Entrar</LoginButton>
+                <LoginButton type="submit">{isLoading ? <Loading /> : "Entrar"} </LoginButton>
+
             </form>
 
             <a href="/register">
                 <RegisterButton type="button">Cadastrar-se</RegisterButton>
             </a>
             <img src="/images/codex_logo_mini.svg" alt="Codex Logo" />
-        </ContentForm>
+        </ContentForm >
     );
 }

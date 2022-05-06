@@ -119,8 +119,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     path: "/",
                 });
 
-                console.log(response.data);
-
                 toast.dismiss(idToast);
 
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
@@ -136,7 +134,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
-                    throw new error();
                 } else {
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",
@@ -145,8 +142,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
-                    throw new error();
                 }
+                throw new Error();
             });
     }
 
@@ -181,17 +178,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 Router.push("/signature");
             })
             .catch((error: AxiosError) => {
-                if (error.message === "Network Error") {
-                    toast.update(idToast, {
-                        render: "Ocorreu um erro, tente novamente mais tarde!",
-                        type: "error",
-                        isLoading: false,
-                        autoClose: 5000,
-                        closeOnClick: true,
-                    });
-                } else if (
-                    error.response.data.error === "Users already exists!"
-                ) {
+                if (error.response?.data.error === "Users already exists!") {
                     toast.update(idToast, {
                         render: "E-mail já cadastrado!",
                         type: "error",
@@ -208,6 +195,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         closeOnClick: true,
                     });
                 }
+                throw new Error();
             });
 
     }

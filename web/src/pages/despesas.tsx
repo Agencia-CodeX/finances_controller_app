@@ -2,11 +2,11 @@ import { withSSRAuth } from "../utils/withSSRAuth";
 import { MainBackground } from "../styles/dashboard";
 import { SideMenu } from "../components/SideMenu";
 
-export default function Dashboard() {
+export default function Despesas() {
 
     return (
         <MainBackground>
-            <SideMenu itemActive="dashboard" />
+            <SideMenu itemActive="despesas" />
         </MainBackground>
     );
 }

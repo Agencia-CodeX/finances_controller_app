@@ -18,12 +18,12 @@ export const Logo = styled.img`
     width: 200px;
 `;
 
-export const MenuContainer = styled.div``;
-
-export const Nav = styled.nav``;
-
-export const Menu = styled.ul`
-    list-style: none;
+export const MenuContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 `;
 
 export const Icon = styled.img`
@@ -37,23 +37,23 @@ export const ItemMenu = styled.button<MenuProps>`
     font-size: 1rem;
     align-items: center;
     padding: 15px 5px;
-    margin: 10px 0;
     border: 0;
     background: transparent;
     color: #ffffff;
+    opacity: 0.7;
     font-weight: 500;
 
     transition: all 0.2s;
 
     &:hover {
-        opacity: 0.9;
-        font-size: 1.2rem;
+        opacity: 1;
     }
 
     ${property => property.active && `
         padding-left: 30px;
         border-radius: 1rem;
         background: linear-gradient(92.47deg, #7388FF -4.2%, #8714CE 41.65%, #B102CD 83.75%);
+        opacity: 1;
 
         transition: filter 0.2s;
 
@@ -72,6 +72,7 @@ export const Logout = styled.div`
 
 export const Button = styled.button`
     color: #ffffff;
+    opacity: 0.7;
     font-weight: 500;
     border: 0;
     background: transparent;
@@ -84,5 +85,6 @@ export const Button = styled.button`
     &:hover {
         opacity: 0.9;
         font-size: 1.2rem;
+        opacity: 1;
     }
 `;
