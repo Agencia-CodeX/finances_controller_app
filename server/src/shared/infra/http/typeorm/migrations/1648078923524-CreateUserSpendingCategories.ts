@@ -23,6 +23,11 @@ export class CreateUserSpendingCategories1648078923524
                         type: "uuid",
                         isPrimary: true,
                     },
+                    {
+                        name: "percentage",
+                        type: "numeric",
+                        isNullable: true
+                    }
                 ],
                 foreignKeys: [
                     {

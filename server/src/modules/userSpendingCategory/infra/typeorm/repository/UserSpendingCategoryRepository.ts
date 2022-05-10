@@ -15,10 +15,12 @@ class UserSpendingCategoryRepository
     async create({
         fk_user_id_user,
         fk_spending_category_id_category,
+        percentage
     }: ICreateUserSpendingCategoryDTO): Promise<UserSpendingCategory> {
         const userSpendingCategory = this.repository.create({
             fk_spending_category_id_category,
             fk_user_id_user,
+            percentage
         });
 
         await this.repository.save(userSpendingCategory);
