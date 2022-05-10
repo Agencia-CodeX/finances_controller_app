@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
@@ -6,6 +7,7 @@ import { TouchableWithoutFeedback, Keyboard, View } from "react-native";
 import { Button } from "../../global/Components/Button";
 import { Categories } from "../../global/Components/Categories";
 import { GradientBackground } from "../../global/Components/GradientBackground";
+import { HeaderNavigator } from "../../global/Components/HeaderNavigator";
 import { Label } from "../../global/Components/LabelInput";
 import { Select } from "../../global/Components/Select";
 import {
@@ -18,7 +20,7 @@ import {
     CategoriesList,
 } from "./styles";
 
-export function ConfigurationsPage() {
+export function ConfigurationsPage({ navigation }: any) {
     const [value, setValue] = useState<number | null>(0);
 
     return (
@@ -27,6 +29,12 @@ export function ConfigurationsPage() {
                 <GradientBackground />
 
                 <Header>
+                    <HeaderNavigator
+                        title="Configurar gastos"
+                        navegator={() => {
+                            navigation.goBack();
+                        }}
+                    />
                     <Label title="Intervalo">
                         <Select />
                     </Label>
@@ -91,7 +99,12 @@ export function ConfigurationsPage() {
                     </CategoriesList>
                 </Content>
                 <Footer>
-                    <Button title="Salvar" />
+                    <Button
+                        title="Salvar"
+                        navegator={() => {
+                            navigation.navigate("MyConfigurationsFilled");
+                        }}
+                    />
                 </Footer>
             </Container>
         </TouchableWithoutFeedback>

@@ -6,6 +6,7 @@ export const Container = styled.View`
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: ${RFValue(15)}px;
+    padding: 0 ${RFValue(25)}px;
 `;
 
 export const Text = styled.Text`

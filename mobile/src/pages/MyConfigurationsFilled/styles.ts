@@ -14,12 +14,10 @@ export const Container = styled.View`
 export const Header = styled.View`
     align-items: center;
     position: absolute;
-    top: ${RFValue(30)}px;
+    top: ${RFValue(40)}px;
     text-align: center;
     width: 100%;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 0 ${RFValue(45)}px;
 `;
 
 export const Profile = styled.View`
@@ -63,7 +61,7 @@ export const AlterTextButton = styled.Text`
 
 export const ConfigButton = styled.TouchableOpacity`
     border: 1px solid rgba(255, 255, 255, 0.17);
-    margin: ${RFValue(30)}px ${RFValue(25)}px;
+    margin: ${RFValue(25)}px ${RFValue(25)}px;
     height: ${RFValue(77)}px;
     padding: 0px ${RFValue(34)}px 0px ${RFValue(34)}px;
     border-radius: ${RFValue(19)}px;
@@ -80,7 +78,7 @@ export const Icons = styled(EvilIcons)`
 export const Main = styled.View`
     width: 100%;
     position: absolute;
-    top: ${RFValue(200)}px;
+    top: ${RFValue(260)}px;
 `;
 
 export const TextButton = styled.Text`
@@ -115,7 +113,7 @@ export const Budget = styled.View`
     flex-direction: row;
     justify-content: space-between;
     padding: 0 ${RFValue(40)}px;
-    margin-top: ${RFValue(20)}px;
+    margin-top: ${RFValue(10)}px;
     font-size: ${RFValue(18)}px;
     font-family: ${({ theme }) => theme.fonts.bold};
 `;
@@ -141,7 +139,7 @@ export const Footer = styled.View`
 export const Button = styled.TouchableOpacity`
     height: ${RFValue(60)}px;
     border-radius: ${RFValue(18)}px;
-    top: ${RFValue(130)}px;
+    top: ${RFValue(150)}px;
     margin-top: ${RFValue(10)}px;
     align-items: center;
     justify-content: center;
@@ -149,7 +147,7 @@ export const Button = styled.TouchableOpacity`
 
 export const MyCategories = styled.View`
     width: 100%;
-    margin-top: ${RFValue(20)}px;
+    margin-top: ${RFValue(15)}px;
     padding: 0 ${RFValue(25)}px;
 `;
 
@@ -157,5 +155,14 @@ export const CardsIcons = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-    padding: ${RFValue(20)}px ${RFValue(110)}px 0 ${RFValue(10)}px;
+    padding: ${RFValue(15)}px ${RFValue(110)}px 0 ${RFValue(10)}px;
+`;
+
+export const ProfileInformations = styled.View`
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 ${RFValue(45)}px;
 `;
