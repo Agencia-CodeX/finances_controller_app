@@ -1,10 +1,42 @@
 import { GetStaticProps } from "next";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import { setupAPIClient } from "../service/api";
-import { AnnumContainer, AppImg, ButtonContainer, ButtonSubscription, CodeXLogo, CodeXLogoMinimalist, Container, Content, ContentSubscription, Details, DetailSubscription, Footer, FreeContainer, ImgContainer, ListDetails, Logo, MainBackground, MonthlyContainer, StoresContainer, SubscriptionContainer, Text, TextFooter, Title, TitleContainer, TitleSubscription, ValueSubscription } from "../styles/signature";
+import { AuthContext } from "../../context/AuthContext";
+import { setupAPIClient } from "../../service/api";
 
-import { WithSSRAuthNotVip } from "../utils/withSSRAuthNotVip";
+import {
+    AnnumContainer,
+    AppImg,
+    Button,
+    ButtonContainer,
+    ButtonSubscription,
+    CodeXLogo,
+    CodeXLogoMinimalist,
+    Container,
+    Content,
+    ContentSubscription,
+    Details,
+    DetailSubscription,
+    Footer,
+    FreeContainer,
+    Icon,
+    ImgContainer,
+    ListDetails,
+    Logo,
+    Logout,
+    MainBackground,
+    MonthlyContainer,
+    StoresContainer,
+    SubscriptionContainer,
+    Text,
+    TextFooter,
+    Title,
+    TitleContainer,
+    TitleSubscription,
+    ValueSubscription
+} from "./styles";
+
+import { WithSSRAuthNotVip } from "../../utils/withSSRAuthNotVip";
 
 interface ISignatureProps {
     user: {
@@ -14,6 +46,7 @@ interface ISignatureProps {
 }
 
 export default function Singnature({ user }: ISignatureProps) {
+    const { signOut } = useContext(AuthContext)
 
     useEffect(() => {
         toast.success(`Boas vindas ${user.name}!`)
@@ -23,6 +56,11 @@ export default function Singnature({ user }: ISignatureProps) {
         <MainBackground>
             <Content>
                 <Container>
+                    <Logout>
+                        <Button onClick={signOut}>
+                            <Icon src="images/logout-icon.svg" /> Desconectar
+                        </Button>
+                    </Logout>
                     <Logo src="images/logo.svg"></Logo>
                     <Title>Cadastro Concluído!</Title>
                     <Text>Agora você possui acesso ao plano Grátis no App com o email <strong>{user.email}</strong>.</Text>
@@ -88,7 +126,7 @@ export default function Singnature({ user }: ISignatureProps) {
                             </Details>
 
                             <ButtonContainer>
-                                <ButtonSubscription btnStyle="monthly">Somente no App</ButtonSubscription>
+                                <ButtonSubscription btnStyle="monthly">Assinar</ButtonSubscription>
                             </ButtonContainer>
                         </ContentSubscription>
                     </MonthlyContainer>
@@ -112,7 +150,7 @@ export default function Singnature({ user }: ISignatureProps) {
                             </Details>
 
                             <ButtonContainer>
-                                <ButtonSubscription btnStyle="annum">Somente no App</ButtonSubscription>
+                                <ButtonSubscription btnStyle="annum">Assinar</ButtonSubscription>
                             </ButtonContainer>
                         </ContentSubscription>
                     </AnnumContainer>
@@ -130,7 +168,7 @@ export default function Singnature({ user }: ISignatureProps) {
 export const getServerSideProps = WithSSRAuthNotVip(async (ctx) => {
     const apiClient = setupAPIClient(ctx)
 
-    const user = await apiClient.get("/users/info").then((response) => response.data)
+    const user = await apiClient.get("/users/info").then((response) => response.data).catch((err) => console.log(err))
 
     return {
         props: {

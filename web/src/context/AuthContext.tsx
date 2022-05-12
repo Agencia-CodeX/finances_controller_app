@@ -33,6 +33,7 @@ type AuthProviderProps = {
 type User = {
     name: string;
     email: string;
+    avatar?: string;
     isVip: boolean;
     isAdmin?: boolean;
 };
@@ -77,12 +78,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     const {
                         name,
                         email,
+                        avatar,
                         isVip,
                         isAdmin,
                     } = response.data;
                     setUser({
                         name,
                         email,
+                        avatar,
                         isVip,
                         isAdmin,
                     });
@@ -119,13 +122,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     path: "/",
                 });
 
-                console.log(response.data);
-
-                toast.dismiss(idToast);
-
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
                 Router.push("/dashboard");
+
+                toast.dismiss(idToast);
             })
             .catch((error) => {
                 if (error.response?.data?.code === "creditials.invalid") {
@@ -136,7 +137,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
-                    throw new error();
                 } else {
                     toast.update(idToast, {
                         render: "Ocorreu um erro, tente novamente mais tarde!",
@@ -145,8 +145,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         autoClose: 5000,
                         closeOnClick: true,
                     });
-                    throw new error();
                 }
+                throw new Error();
             });
     }
 
@@ -176,22 +176,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     path: "/",
                 });
 
-                toast.dismiss(idToast);
-
                 Router.push("/signature");
+
+                toast.dismiss(idToast);
             })
             .catch((error: AxiosError) => {
-                if (error.message === "Network Error") {
-                    toast.update(idToast, {
-                        render: "Ocorreu um erro, tente novamente mais tarde!",
-                        type: "error",
-                        isLoading: false,
-                        autoClose: 5000,
-                        closeOnClick: true,
-                    });
-                } else if (
-                    error.response.data.error === "Users already exists!"
-                ) {
+                if (error.response?.data.error === "Users already exists!") {
                     toast.update(idToast, {
                         render: "E-mail já cadastrado!",
                         type: "error",
@@ -208,6 +198,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                         closeOnClick: true,
                     });
                 }
+                throw new Error();
             });
 
     }

@@ -24,11 +24,23 @@ export const FormBox = styled.div`
             color: var(--white);
             font-weight: 500;
         }
+
+        :-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #252530 inset;
+            box-shadow: 0 0 0 30px #252530 inset;
+        }
+
+        :-webkit-autofill {
+            -webkit-text-fill-color: var(--white) !important;
+        }
     }
 `;
 
 export const LoginButton = styled.button`
     width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 15px 0;
     margin-top: 25px;
     color: var(--white);
@@ -55,6 +67,7 @@ export const RegisterButton = styled.button`
     border-radius: 1rem;
     border: 1px #fff solid;
     background: transparent;
+    margin-top: 25px;
 
     &:hover {
         background: rgba(54, 55, 69, 0.8);
@@ -73,10 +86,6 @@ export const ContentForm = styled.section`
         font-size: 1.5rem;
         font-weight: 500;
         margin-bottom: 20px;
-    }
-
-    a {
-        margin-top: 25px;
     }
 
     img {

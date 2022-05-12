@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
         --grey: #dddddd;
         --red: #fc0a0a;
         --black: #000000;
+        --brand: #9245DE;
+        --blue: #5F7EFF;
         --linear_blue: linear-gradient(90deg, #000639 0%, rgba(43, 0, 69, 0.65) 100%);
     }
 

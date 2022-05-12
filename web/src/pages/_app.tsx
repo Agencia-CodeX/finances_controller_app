@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "../context/AuthContext";
 import { GlobalStyle } from "../styles/global";
 
+import "../styles/tailwind.css"
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <AuthProvider>

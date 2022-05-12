@@ -6,6 +6,9 @@ export const ReturnButton = styled.div`
 
 export const RegisterButton = styled.button`
     width: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 15px 0;
     margin: 25px 0 10px;
     color: var(--white);

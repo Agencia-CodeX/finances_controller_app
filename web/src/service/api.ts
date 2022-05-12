@@ -38,7 +38,6 @@ export function setupAPIClient(ctx = undefined) {
                         })
                             .then((response) => {
                                 const { token } = response.data;
-                                console.log("Refresh")
 
                                 setCookie(ctx, "qfinance.token", token, {
                                     maxAge: 60 * 60 * 24 * 30, // 30 dias
