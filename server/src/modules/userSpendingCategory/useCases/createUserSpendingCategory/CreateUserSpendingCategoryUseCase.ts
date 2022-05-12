@@ -5,6 +5,7 @@ import { IUserSpendingCategoryRepository } from "../../repository/IUserSpendingC
 interface IRequest {
     usersCategories: {
         fk_spending_category_id_category: string;
+        percentage?: number
     }[];
     fk_user_id_user: string;
 }
@@ -22,7 +23,7 @@ class CreateUserSpendingCategoryUseCase {
         );
 
         usersCategories.map(async (userCategory) => {
-            const { fk_spending_category_id_category } = userCategory;
+            const { fk_spending_category_id_category, percentage } = userCategory;
 
             const existUserCategory =
                 await this.userSpendingCategoryRepository.findById(
@@ -32,6 +33,7 @@ class CreateUserSpendingCategoryUseCase {
             if (!existUserCategory) {
                 await this.userSpendingCategoryRepository.create({
                     fk_spending_category_id_category,
+                    percentage,
                     fk_user_id_user,
                 });
             }

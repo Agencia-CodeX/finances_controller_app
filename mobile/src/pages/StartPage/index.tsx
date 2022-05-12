@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable global-require */
+
 import React from "react";
 
 import { GradientBackground } from "../../global/Components/GradientBackground";
@@ -18,7 +21,7 @@ import {
     BottomTexts,
 } from "./styles";
 
-export function StartPage() {
+export function StartPage({ navigation }: any) {
     return (
         <Container>
             <GradientBackground />
@@ -29,7 +32,11 @@ export function StartPage() {
             <Footer>
                 <Title>Tome o controle das suas finanças!</Title>
 
-                <StartButton>
+                <StartButton
+                    onPress={() => {
+                        navigation.navigate("Register");
+                    }}
+                >
                     <LinearBackgroundButton>
                         <TextButton>Começe agora!</TextButton>
                     </LinearBackgroundButton>
@@ -37,7 +44,13 @@ export function StartPage() {
 
                 <BottomTexts>
                     <SignInText>Já possui uma conta? </SignInText>
-                    <Link>Entre aqui</Link>
+                    <Link
+                        onPress={() => {
+                            navigation.navigate("Login");
+                        }}
+                    >
+                        Entre aqui
+                    </Link>
                 </BottomTexts>
             </Footer>
         </Container>

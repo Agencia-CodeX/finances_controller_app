@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/prop-types */
 import React from "react";
 
 import { GradientBackground } from "../../global/Components/GradientBackground";
@@ -14,7 +16,7 @@ import {
     TextButton,
 } from "./styles";
 
-export function Register() {
+export function Register({ navigation }: any) {
     return (
         <Container>
             <GradientBackground />
@@ -30,7 +32,11 @@ export function Register() {
                     <Input placeholder="Senha" secureTextEntry />
                     <Input placeholder="Confirmar Senha" secureTextEntry />
                 </RegisterForm>
-                <RegisterButton>
+                <RegisterButton
+                    onPress={() => {
+                        navigation.navigate("MyConfigurations");
+                    }}
+                >
                     <LinearBackgroundButton>
                         <TextButton>Cadastrar-se</TextButton>
                     </LinearBackgroundButton>

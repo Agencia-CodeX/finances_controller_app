@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import Animated, {
     useSharedValue,
@@ -11,7 +13,7 @@ import DiamondStartSvg from "../../assets/diamondStart.svg";
 import LogoSvg from "../../assets/qfinance.svg";
 import { Container } from "./styles";
 
-export function Splash() {
+export function Splash({ navigation }: any) {
     const splashAnimation = useSharedValue(0);
 
     const diamondStartStyle = useAnimatedStyle(() => {
@@ -73,6 +75,10 @@ export function Splash() {
     useEffect(() => {
         splashAnimation.value = withTiming(50, { duration: 2000 });
     }, []);
+
+    setTimeout(() => {
+        navigation.navigate("StartPage");
+    }, 4000);
 
     return (
         <Container>

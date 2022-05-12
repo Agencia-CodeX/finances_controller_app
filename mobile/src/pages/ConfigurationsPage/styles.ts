@@ -13,9 +13,8 @@ export const Container = styled.View`
 
 export const Header = styled.View`
     width: 100%;
-    padding: 0 ${RFValue(25)}px;
     position: absolute;
-    top: ${RFValue(80)}px;
+    top: ${RFValue(50)}px;
 `;
 
 export const Intervalo = styled.View`
@@ -41,7 +40,7 @@ export const Title = styled.Text`
     color: ${({ theme }) => theme.colors.fontsColor};
     font-size: ${RFValue(15)}px;
 
-    margin-top: ${RFValue(10)}px;
+    margin-top: ${RFValue(20)}px;
     padding: 0;
 `;
 

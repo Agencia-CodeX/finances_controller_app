@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/prop-types */
 import React from "react";
 
 import { GradientBackground } from "../../global/Components/GradientBackground";
 import { LinearBackgroundButton } from "../../global/Components/GradientButton";
+import { HeaderNavigator } from "../../global/Components/HeaderNavigator";
 import {
     Container,
     Button,
@@ -17,11 +20,17 @@ import {
     Footer,
 } from "./styles";
 
-export function MyConfigurations() {
+export function MyConfigurations({ navigation }: any) {
     return (
         <Container>
             <GradientBackground />
             <Header>
+                <HeaderNavigator
+                    title="Configurações"
+                    navegator={() => {
+                        navigation.goBack();
+                    }}
+                />
                 <Title>Boas vindas,</Title>
                 <Title>Guilherme Veroneze</Title>
                 <Profile>
@@ -30,7 +39,11 @@ export function MyConfigurations() {
                 <AlterButton>
                     <AlterTextButton>Alterar</AlterTextButton>
                 </AlterButton>
-                <ConfigButton>
+                <ConfigButton
+                    onPress={() => {
+                        navigation.navigate("Configurations");
+                    }}
+                >
                     <Icons name="gear" size={50} />
                     <TextButton>Configurar gastos</TextButton>
                 </ConfigButton>

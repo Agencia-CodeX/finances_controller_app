@@ -19,6 +19,9 @@ class User {
     avatar: string;
 
     @Column()
+    phone: number;
+
+    @Column()
     is_admin: boolean;
 
     @Column()
