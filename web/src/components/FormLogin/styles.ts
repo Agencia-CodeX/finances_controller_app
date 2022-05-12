@@ -58,6 +58,7 @@ export const RegisterButton = styled.button`
     border-radius: 1rem;
     border: 1px #fff solid;
     background: transparent;
+    margin-top: 25px;
 
     &:hover {
         background: rgba(54, 55, 69, 0.8);
@@ -76,10 +77,6 @@ export const ContentForm = styled.section`
         font-size: 1.5rem;
         font-weight: 500;
         margin-bottom: 20px;
-    }
-
-    a {
-        margin-top: 25px;
     }
 
     img {

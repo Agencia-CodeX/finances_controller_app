@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useState } from "react";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { AuthContext } from "../../context/AuthContext";
-import { capitalizeFirst } from "../../utils/CapitalizeFirtsWords";
+import { capitalizeFirstLetters } from "../../utils/CapitalizeFirtsLetters";
 
 import { ValidateRegisterForm } from "../../utils/ValidateRegisterForm";
 import { Loading } from "../Loading";
@@ -27,7 +27,7 @@ export function FormRegister() {
             return;
         }
 
-        const newName = capitalizeFirst(name);
+        const newName = capitalizeFirstLetters(name);
         setName(newName);
 
         try {

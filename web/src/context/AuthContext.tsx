@@ -33,6 +33,7 @@ type AuthProviderProps = {
 type User = {
     name: string;
     email: string;
+    avatar?: string;
     isVip: boolean;
     isAdmin?: boolean;
 };
@@ -77,12 +78,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     const {
                         name,
                         email,
+                        avatar,
                         isVip,
                         isAdmin,
                     } = response.data;
                     setUser({
                         name,
                         email,
+                        avatar,
                         isVip,
                         isAdmin,
                     });
@@ -119,11 +122,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     path: "/",
                 });
 
-                toast.dismiss(idToast);
-
                 api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
                 Router.push("/dashboard");
+
+                toast.dismiss(idToast);
             })
             .catch((error) => {
                 if (error.response?.data?.code === "creditials.invalid") {
@@ -173,9 +176,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     path: "/",
                 });
 
-                toast.dismiss(idToast);
-
                 Router.push("/signature");
+
+                toast.dismiss(idToast);
             })
             .catch((error: AxiosError) => {
                 if (error.response?.data.error === "Users already exists!") {
