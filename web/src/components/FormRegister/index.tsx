@@ -49,24 +49,28 @@ export function FormRegister() {
                 <FormBox>
                     <h4>Cadastro</h4>
                     <input
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                         type="text"
                         placeholder="Nome"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                     />
                     <input
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                         type="text"
                         placeholder="E-mail"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                     />
                     <input
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                         type="password"
                         placeholder="Senha"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                     />
                     <input
+                        className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                         type="password"
                         placeholder="Confirmar Senha"
                         value={confirmPassword}
@@ -75,11 +79,16 @@ export function FormRegister() {
                         }
                     />
                 </FormBox>
-                <RegisterButton type="submit">{isLoading ? <Loading /> : "Cadastrar"}</RegisterButton>
+                <RegisterButton
+                    className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
+                    type="submit"
+                >
+                    {isLoading ? <Loading /> : "Cadastrar"}
+                </RegisterButton>
             </form>
 
             <ReturnButton>
-                <a href="/login">
+                <a href="/login" className="flex gap-2 mt-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50">
                     <HiOutlineArrowNarrowLeft /> Voltar
                 </a>
             </ReturnButton>

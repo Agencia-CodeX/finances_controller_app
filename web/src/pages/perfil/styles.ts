@@ -8,3 +8,9 @@ export const MainBackground = styled.main`
     background-size: cover;
     background-repeat: no-repeat;
 `;
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`;

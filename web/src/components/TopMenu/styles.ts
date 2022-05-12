@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { User } from "phosphor-react";
 
 export const Container = styled.div`
-    width: calc(100% - 330px);
-    margin-left: 330px;
+    width: 100%;
     margin-top: 50px;
-    padding: 0 50px;
+    padding: 0 30px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -24,10 +23,12 @@ export const Text = styled.h1`
 `;
 export const UserInfo = styled.div`
     width: auto;
+    min-width: 270px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 30px;
 `;
 export const NickName = styled.p`
     color: var(--white);

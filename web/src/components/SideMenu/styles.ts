@@ -11,7 +11,6 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 50px 80px;
-    position: fixed;
 `;
 
 export const Logo = styled.img`
@@ -37,6 +36,7 @@ export const ItemMenu = styled.button<MenuProps>`
     font-size: 1rem;
     align-items: center;
     padding: 15px 5px;
+    border-radius: 1rem;
     border: 0;
     background: transparent;
     color: #ffffff;
@@ -51,7 +51,6 @@ export const ItemMenu = styled.button<MenuProps>`
 
     ${property => property.active && `
         padding-left: 30px;
-        border-radius: 1rem;
         background: linear-gradient(92.47deg, #7388FF -4.2%, #8714CE 41.65%, #B102CD 83.75%);
         opacity: 1;
 

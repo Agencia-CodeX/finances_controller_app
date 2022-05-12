@@ -24,6 +24,15 @@ export const FormBox = styled.div`
             color: var(--white);
             font-weight: 500;
         }
+
+        :-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #252530 inset;
+            box-shadow: 0 0 0 30px #252530 inset;
+        }
+
+        :-webkit-autofill {
+            -webkit-text-fill-color: var(--white) !important;
+        }
     }
 `;
 

@@ -61,13 +61,22 @@ export function SideMenu({ itemActive }: SideMenuProps) {
                     return (
                         itemActive === key ?
 
-                            <ItemMenu key={key} onClick={() => Router.push(value.url)} active>
+                            <ItemMenu
+                                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500"
+                                key={key}
+                                onClick={() => Router.push(value.url)}
+                                active
+                            >
                                 <Icon src={value.image.source} alt={value.image.alt} /> {value.title}
                             </ItemMenu>
 
                             :
 
-                            <ItemMenu key={key} onClick={() => Router.push(value.url)}>
+                            <ItemMenu
+                                key={key}
+                                onClick={() => Router.push(value.url)}
+                                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:ring-blue-650 focus:opacity-100"
+                            >
                                 <Icon src={value.image.source} alt={value.image.alt} /> {value.title}
                             </ItemMenu>
 
@@ -76,7 +85,7 @@ export function SideMenu({ itemActive }: SideMenuProps) {
 
             </MenuContainer >
             <Logout>
-                <Button onClick={signOut}>
+                <Button onClick={signOut} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:ring-zinc-50 focus:opacity-100">
                     <Icon src="images/logout-icon.svg" /> Desconectar
                 </Button>
             </Logout>
