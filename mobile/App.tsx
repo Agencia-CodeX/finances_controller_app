@@ -14,6 +14,7 @@ import { ThemeProvider } from "styled-components";
 
 import theme from "./src/global/styles/theme";
 import { ConfigurationsPage } from "./src/pages/ConfigurationsPage";
+import { Historic } from "./src/pages/Historic";
 import { Login } from "./src/pages/Login";
 import { MyConfigurationsFilled } from "./src/pages/MyConfigurationsFilled";
 import { MyConfigurations } from "./src/pages/MyConfigurationsPage";
@@ -72,6 +73,11 @@ export default function App() {
                     <Stack.Screen
                         name="Configurations"
                         component={ConfigurationsPage}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Histórico"
+                        component={Historic}
                         options={{ headerShown: false }}
                     />
                 </Stack.Navigator>
