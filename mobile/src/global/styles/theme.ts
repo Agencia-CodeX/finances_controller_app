@@ -7,6 +7,7 @@ export default {
         gradient2: "#9245DE",
 
         fontsColor: "#FFFFFF",
+        negative: "#FF262D",
     },
 
     fonts: {

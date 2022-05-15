@@ -78,7 +78,11 @@ export function MyConfigurationsFilled({ navigation }: any) {
                 </MyCategories>
             </Main>
             <Footer>
-                <Button>
+                <Button
+                    onPress={() => {
+                        navigation.navigate("Histórico");
+                    }}
+                >
                     <LinearBackgroundButton>
                         <TextButton>Ver histórico</TextButton>
                     </LinearBackgroundButton>
