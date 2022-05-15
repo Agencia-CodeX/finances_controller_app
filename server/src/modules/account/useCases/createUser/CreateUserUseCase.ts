@@ -17,7 +17,7 @@ interface IResponse {
         email: string;
         is_vip: boolean;
         is_admin: boolean;
-        phone: number;
+        phone: string;
     };
 }
 
@@ -30,7 +30,7 @@ class CreateUserUseCase {
         private usersRepository: IUsersRepository,
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
-    ) { }
+    ) {}
 
     async execute({
         email,

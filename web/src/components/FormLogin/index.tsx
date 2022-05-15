@@ -59,6 +59,7 @@ export function FormLogin() {
                 <LoginButton
                     className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                     type="submit"
+                    disabled={isLoading}
                 >
                     {isLoading ? <Loading /> : "Entrar"}
                 </LoginButton>

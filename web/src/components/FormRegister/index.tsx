@@ -8,7 +8,7 @@ import { Loading } from "../Loading";
 import { ContentForm, FormBox, RegisterButton, ReturnButton } from "./styles";
 
 export function FormRegister() {
-    const [name, setName] = useState("");
+    const [formName, setFormName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassroword] = useState("");
@@ -20,6 +20,8 @@ export function FormRegister() {
         event.preventDefault();
         setLoading(true)
 
+        const name = capitalizeFirstLetters(formName);
+
         const formRegisterData = { name, email, password, confirmPassword };
 
         if (ValidateRegisterForm(formRegisterData)) {
@@ -27,14 +29,10 @@ export function FormRegister() {
             return;
         }
 
-        const newName = capitalizeFirstLetters(name);
-        setName(newName);
-
         try {
             await register({ name, email, password });
-            setLoading(false)
 
-            setName("");
+            setFormName("");
             setEmail("");
             setPassword("");
             setConfirmPassroword("");
@@ -52,8 +50,8 @@ export function FormRegister() {
                         className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                         type="text"
                         placeholder="Nome"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
+                        value={formName}
+                        onChange={(event) => setFormName(event.target.value)}
                     />
                     <input
                         className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
@@ -82,6 +80,7 @@ export function FormRegister() {
                 <RegisterButton
                     className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-zinc-50"
                     type="submit"
+                    disabled={isLoading}
                 >
                     {isLoading ? <Loading /> : "Cadastrar"}
                 </RegisterButton>

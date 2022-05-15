@@ -140,7 +140,7 @@ export const SettingSecundary = styled.div`
     background-clip: content-box, border-box;
 `;
 
-export const CellContainer = styled.div`
+export const PhoneContainer = styled.div`
     margin-right: 40px;
     ${SettingSecundary} {
         width: 230px;

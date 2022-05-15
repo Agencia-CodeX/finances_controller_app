@@ -14,20 +14,20 @@ export default function Perfil() {
         async function SearchUserInfo(): Promise<void> {
             await api.get("users/info")
                 .then(response => {
-                    const { name, email, avatar, vip_expires_date } = response.data;
+                    const { name, email, avatar, phone, vip_expires_date } = response.data;
                     const user = {
                         firstName: SplitFirsWord(name),
                         name,
                         email,
                         avatar,
-                        cell: null,
+                        phone,
                         expiresDate: new Date(vip_expires_date).toLocaleDateString("pt-BR", {
                             day: "2-digit",
                             month: "2-digit",
                             year: "numeric"
                         }),
                     }
-                    console.log(user)
+                    console.log(response.data)
                     setUser(user);
                 })
             return;

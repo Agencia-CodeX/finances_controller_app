@@ -11,7 +11,7 @@ interface IRequest {
     email?: string;
     password?: string;
     avatar?: string;
-    phone?: number;
+    phone?: string;
     id_user: string;
 }
 
@@ -23,11 +23,11 @@ class UpdateUserInformationUseCase {
     ) {}
     async execute({ id_user, avatar, email, name, password, phone }: IRequest) {
         const userUpdated = await this.usersRepository.updateUserInformation({
-            id_user, 
-            avatar, 
-            email, 
-            name, 
-            password, 
+            id_user,
+            avatar,
+            email,
+            name,
+            password,
             phone
         })
 

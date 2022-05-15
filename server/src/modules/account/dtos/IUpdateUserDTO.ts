@@ -3,7 +3,7 @@ interface IUpdateUserDTO {
     email?: string;
     password?: string;
     avatar?: string;
-    phone?: number;
+    phone?: string;
     id_user: string;
 }
 
