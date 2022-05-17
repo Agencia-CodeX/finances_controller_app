@@ -23,7 +23,7 @@ export function UpdateUserModal({ isOpen, onRequestClose, user }: UpdateUserModa
     const [phone, setPhone] = useState(user.phone);
     const [isLoading, setLoading] = useState(false);
 
-    if (!user.phone) {
+    if (phone === null) {
         setPhone("");
     }
 
@@ -44,12 +44,14 @@ export function UpdateUserModal({ isOpen, onRequestClose, user }: UpdateUserModa
             return;
         }
 
+        const phoneUnformated = phone.replace(/[^\d]/g, "")
+
         const captalizeName = capitalizeFirstLetters(name);
 
         const updatedUser = {
             name: captalizeName,
             email,
-            phone
+            phone: phoneUnformated
         }
 
         await api.put("/users", updatedUser)
@@ -79,7 +81,7 @@ export function UpdateUserModal({ isOpen, onRequestClose, user }: UpdateUserModa
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="fixed inset-0 bg-[#1C1C1C] bg-opacity-5 backdrop-blur-sm" />
+                    <div className="fixed inset-0 bg-[#1C1C1C] bg-opacity-30 backdrop-blur-sm" />
                 </Transition.Child>
 
                 <div className="fixed inset-0 overflow-y-auto">

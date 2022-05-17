@@ -27,7 +27,6 @@ export default function Perfil() {
                             year: "numeric"
                         }),
                     }
-                    console.log(response.data)
                     setUser(user);
                 })
             return;

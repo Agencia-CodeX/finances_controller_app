@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { formatPhoneNumber } from "../../utils/FormatPhoneNumber";
 import {
     Container,
     Settings,
@@ -73,7 +74,7 @@ export function UserSettings({ userInfo }: UserInfoProps) {
                             <PhoneContainer>
                                 <SettingLabel>Celular:</SettingLabel>
                                 <SettingSecundary>
-                                    {userInfo.phone ? userInfo.phone : "Não cadastrado"}
+                                    {userInfo.phone ? formatPhoneNumber(userInfo.phone) : "Não cadastrado"}
                                 </SettingSecundary>
                             </PhoneContainer>
 
